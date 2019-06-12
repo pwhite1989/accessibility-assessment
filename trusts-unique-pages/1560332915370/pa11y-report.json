@@ -1,0 +1,58 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+    "context": "<noscript><iframe src=\"https://www.google...</noscript>",
+    "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 1:1. Recommendation: change text colour to #feffff.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#global-header > div > noscript"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs",
+    "context": "<h2 id=\"data-list-heading--complete--hidden\" class=\"visually-hidden\">entity.individual beneficiary’s...</h2>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 3:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#data-list-heading--complete--hidden"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs",
+    "context": "<span class=\"visually-hidden\">Change John Doe</span>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#data-list--complete > div > dd:nth-child(3) > a > span:nth-child(2)"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs",
+    "context": "<span class=\"visually-hidden\">Delete John Doe</span>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#data-list--complete > div > dd:nth-child(4) > a > span:nth-child(2)"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs",
+    "context": "<span class=\"bold-small visually-hidden\">Add a beneficiary</span>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 3:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#value > legend > span"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<div class=\"report-error\">\n    <script type=\"text/javascr...</div>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > div"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G145.Abs",
+    "context": "<h2 class=\"visually-hidden\">Support links</h2>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 3:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#footer > div > div > div:nth-child(1) > h2"
+  }
+]
