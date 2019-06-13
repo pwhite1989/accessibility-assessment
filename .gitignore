@@ -25,4 +25,4 @@ yarn-error.log
 #project specific
 server/node_modules
 server/output/*
-!server/output/.gitkeep    
+!server/output/.gitkeep
