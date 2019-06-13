@@ -1,0 +1,30 @@
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "aXe","test_suite": "trusts-ui-test","path": "/blah/apple","timestamp": 1560332915370,"code": "issue-a","severity": "critical","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "aXe","test_suite": "trusts-ui-test","path": "/blah/orange","timestamp": 1560333105615,"code": "issue-b","severity": "warning","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "aXe","test_suite": "trusts-ui-test","path": "/blah/pear","timestamp": 1560332956054,"code": "issue-c","severity": "info","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "aXe","test_suite": "trusts-ui-test","path": "/blah/pineapple","timestamp": 1560333103049,"code": "issue-d","severity": "critical","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "aXe","test_suite": "trusts-ui-test","path": "/blah/banana","timestamp": 1560333100829,"code": "issue-e","severity": "critical","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "pa11y","test_suite": "trusts-ui-test","path": "/blah/pear","timestamp": 1560332956054,"code": "issue-a","severity": "info","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "pa11y","test_suite": "trusts-ui-test","path": "/blah/orange","timestamp": 1560333087322,"code": "issue-a","severity": "info","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "pa11y","test_suite": "trusts-ui-test","path": "/blah/apple","timestamp": 1560332915370,"code": "issue-b","severity": "info","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "pa11y","test_suite": "trusts-ui-test","path": "/blah/banana","timestamp": 1560333062011,"code": "issue-b","severity": "info","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "pa11y","test_suite": "trusts-ui-test","path": "/blah/apple","timestamp": 1560332915370,"code": "issue-z","severity": "warning","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "vnu","test_suite": "trusts-ui-test","path": "/blah/peach","timestamp": 1560333005801,"code": "issue-a","severity": "critical","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "vnu","test_suite": "trusts-ui-test","path": "/blah/mandarin","timestamp": 1560332915370,"code": "issue-b","severity": "warning","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "vnu","test_suite": "trusts-ui-test","path": "/blah/cantelope","timestamp": 1560332915370,"code": "issue-z","severity": "info","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "vnu","test_suite": "trusts-ui-test","path": "/blah/strawberry","timestamp": 1560333003415,"code": "issue-a","severity": "critical","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
+{"index":{"_index":"accessibility","_type":"violations"}}
+{"tool": "vnu","test_suite": "trusts-ui-test","path": "/blah/blueberry","timestamp": 1560333001310,"code": "issue-a","severity": "warning","description": "An accessibility issue was found.","selector": "#some-id","snippet": "<p>some para text</p>"}
