@@ -1,19 +1,15 @@
 package uk.gov.hmrc.a11y
 
 import java.io.FileInputStream
-import java.text.SimpleDateFormat
 
 import play.api.libs.json.{JsValue, Json, OWrites}
-import uk.gov.hmrc.a11y.ParseA11yReport.{fileWriter, reportDirectories, testSuite}
-
-import scala.io.Source
+import uk.gov.hmrc.a11y.ParseA11yReport.{outputFileWriter, testSuite}
 
 object AxeReport {
 
-  def apply(reportFolderPath: String): Unit = {
+  def apply(reportFolderPath: String, pageUrl: String, testRunTimeStamp: String): Unit = {
     val axeReport: String = s"$reportFolderPath/axe-report.json"
-    val url: String = pageUrl(reportFolderPath)
-    val parsedReport: List[JsValue] = parseJsonFile(axeReport)
+    val parsedReport: List[JsValue] = parseJsonFile(axeReport).as[List[JsValue]]
     val timeStamp: Long = reportFolderPath.split("/").last.toLong
 
 
@@ -28,7 +24,7 @@ object AxeReport {
         val selector = getValue(nodes.head, "target")
         val snippet = getValue(nodes.head, "html")
 
-        Violation("axe", testSuite, url, testTimeStamp, timeStamp, code, severity, description, selector, snippet)
+        Violation("axe", testSuite, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
     }
 
     val inCompleteList: List[JsValue] = parsedReport.flatMap(report => (report \ "incomplete").as[List[JsValue]])
@@ -40,7 +36,7 @@ object AxeReport {
         val description = getValue(t, "message")
         val selector = getValue(t, "data")
         val snippet = getValue(t, "html")
-        Violation("axe", testSuite, url, testTimeStamp, timeStamp, code, severity, s"Incomplete Alert: $description", selector, snippet)
+        Violation("axe", testSuite, pageUrl, testRunTimeStamp, timeStamp, code, severity, s"Incomplete Alert: $description", selector, snippet)
     }
 
     val alerts = violationAlerts ++ inCompleteAlerts
@@ -48,29 +44,17 @@ object AxeReport {
     implicit val reportWrites: OWrites[Violation] = Json.writes[Violation]
     alerts.foreach { v =>
       println(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
-      fileWriter.write(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
+      outputFileWriter.write(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
     }
 
   }
 
-  def testTimeStamp: String = {
-    val firstTestTimeStamp = reportDirectories.map(_.toLong).sortWith(_ < _).head
-    new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(firstTestTimeStamp)
-  }
-
-  def pageUrl(reportFolderPath: String): String = {
-    val fileData = s"$reportFolderPath/data"
-    val bufferedSource = Source.fromFile(fileData)
-    val url = bufferedSource.getLines().take(1).toList.head
-    bufferedSource.close
-    url
-  }
-
-  def parseJsonFile(reportPath: String): List[JsValue] = {
+  def parseJsonFile(reportPath: String): JsValue = {
     val stream = new FileInputStream(reportPath)
     try {
-      Json.parse(stream).as[List[JsValue]]
-    } finally {
+      Json.parse(stream)
+    }
+    finally {
       stream.close()
     }
   }
