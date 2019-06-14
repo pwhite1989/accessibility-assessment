@@ -1,10 +1,10 @@
 #!/bin/bash
 
 logFileName="service.log"
-serviceName="trusts-registration"
-uniquePageDirectory="trusts-unique-pages"
+servicePort="9856"
+uniquePageDirectory="business-multi-factor-authentication-acceptance-tests"
 
-read -a uniqueUrls <<< $(cat $logFileName | grep http:// | grep $serviceName | sed -n -e 's/^.*\(http:\/\/\)/\1/p' | tr -d \'\, | sort | uniq)
+read -a uniqueUrls <<< $(cat $logFileName | grep http:// | grep $servicePort | sed -n -e 's/^.*\(http:\/\/\)/\1/p' | tr -d \'\, | sort | uniq)
 mkdir -p $uniquePageDirectory
 
 for url in "${uniqueUrls[@]}"
@@ -17,4 +17,4 @@ done
 
 
 #remove all directories in output
-# find output -type d | grep / 
+# find output -type d | grep /
