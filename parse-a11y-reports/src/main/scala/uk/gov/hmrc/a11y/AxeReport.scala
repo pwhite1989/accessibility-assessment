@@ -47,7 +47,7 @@ object AxeReport {
 
     implicit val reportWrites: OWrites[Violation] = Json.writes[Violation]
     alerts.foreach { v =>
-//      println(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
+      println(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
       fileWriter.write(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
     }
 
