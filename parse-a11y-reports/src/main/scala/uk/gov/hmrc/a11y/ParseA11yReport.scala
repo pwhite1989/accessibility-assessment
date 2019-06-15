@@ -29,7 +29,6 @@ object ParseA11yReport {
     println("********** Generating A11Y report ***********")
     generateReport()
     println("********** Completed ***********")
-
   }
 
   def generateReport(): Unit = {
