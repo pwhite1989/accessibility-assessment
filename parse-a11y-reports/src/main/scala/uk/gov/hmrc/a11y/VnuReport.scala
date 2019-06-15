@@ -15,7 +15,7 @@ object VnuReport {
     new File(vnuReport).length() match {
       case 0 => println(s"vnu report is empty for $vnuReport")
       case _ =>
-        val alerts = (parseJsonFile(vnuReport) \ "messages").as[List[JsValue]].map {
+        val alerts: List[Violation] = (parseJsonFile(vnuReport) \ "messages").as[List[JsValue]].map {
           t =>
             val code = getJsValue(t, "code")
             val severity = getJsValue(t, "type")

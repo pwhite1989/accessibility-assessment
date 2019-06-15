@@ -13,7 +13,7 @@ object AxeReport {
 
     val violationsList: List[JsValue] = parsedReport.flatMap(reports => (reports \ "violations").as[List[JsValue]])
 
-    val violationAlerts = violationsList.map {
+    val violationAlerts: List[Violation] = violationsList.map {
       t =>
         val code = getJsValue(t, "id")
         val severity = getJsValue(t, "impact")
@@ -27,7 +27,7 @@ object AxeReport {
 
     val inCompleteList: List[JsValue] = parsedReport.flatMap(report => (report \ "incomplete").as[List[JsValue]])
 
-    val inCompleteAlerts = inCompleteList.map {
+    val inCompleteAlerts: List[Violation] = inCompleteList.map {
       t =>
         val code = getJsValue(t, "id")
         val severity = getJsValue(t, "impact")

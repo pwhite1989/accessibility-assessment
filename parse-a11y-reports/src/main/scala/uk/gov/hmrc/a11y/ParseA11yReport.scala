@@ -32,13 +32,13 @@ object ParseA11yReport {
 
         // Path of directories under each test Directory which contain a11y reports for every page of that test suite.
         // example: page-capture-spike/pages/trusts-unique-pages/1560332773877
-        val reportDirectoriesPath = new File(testDirectoryPath).listFiles()
+        val reportDirectoriesPath: Array[String] = new File(testDirectoryPath).listFiles()
           .filter(_.isDirectory)
           .map(s"$testDirectoryPath/" + _.getName)
 
-        //The first report's timestamp, stored as the report directory name, is used as the value of 'TestRun' Json field in the output
-        val firstReportTimeStamp = reportDirectoriesPath.map(_.split("/").last.toLong).sortWith(_ < _).head
-        val testRunTimeStamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(firstReportTimeStamp)
+        //The earliest report's timestamp, stored as the report directory name, is used as the value of 'TestRun' Json field in the output
+        val earliestTimeStamp: Long = reportDirectoriesPath.map(_.split("/").last.toLong).sortWith(_ < _).head
+        val testRunTimeStamp: String = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(earliestTimeStamp)
 
         //For each report directory i.e page-capture-spike/pages/trusts-unique-pages/1560332773877
         // axe-report.json, pa11y-report.json, vnu-report.json is parsed.
@@ -54,7 +54,7 @@ object ParseA11yReport {
             VnuReport(reportDirectoryPath, testSuiteName, pageUrl(reportDirectoryPath), testRunTimeStamp)
         }
     }
-    Output.closeFileWriter
+    Output.closeFileWriter()
   }
 
   private def pageUrl(reportFolderPath: String): String = {

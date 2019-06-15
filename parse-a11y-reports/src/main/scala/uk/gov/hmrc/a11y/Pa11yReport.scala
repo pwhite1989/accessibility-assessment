@@ -15,7 +15,7 @@ object Pa11yReport {
     new File(pa11yReport).length() match {
       case 0 => println(s"Pa11y report is empty for $pa11yReport")
       case _ =>
-        val alerts = parseJsonFile(pa11yReport).as[List[JsValue]].map {
+        val alerts: List[Violation] = parseJsonFile(pa11yReport).as[List[JsValue]].map {
           t =>
             val code = getJsValue(t, "code")
             val severity = getJsValue(t, "type")

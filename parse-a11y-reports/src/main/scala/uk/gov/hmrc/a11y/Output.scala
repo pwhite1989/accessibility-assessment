@@ -18,6 +18,6 @@ object Output {
     }
   }
 
-  def closeFileWriter: Unit = outputFileWriter.close()
+  def closeFileWriter(): Unit = outputFileWriter.close()
 
 }
