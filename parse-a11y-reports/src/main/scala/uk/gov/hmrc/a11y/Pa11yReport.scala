@@ -4,11 +4,10 @@ import java.io.File
 
 import play.api.libs.json.{JsValue, Json}
 import uk.gov.hmrc.a11y.JsonUtil._
-import uk.gov.hmrc.a11y.ParseA11yReport.testSuite
 
 object Pa11yReport {
 
-  def apply(reportFolderPath: String, pageUrl: String, testRunTimeStamp: String): Unit = {
+  def apply(reportFolderPath: String, testSuite: String,  pageUrl: String, testRunTimeStamp: String): Unit = {
 
     val pa11yReport: String = s"$reportFolderPath/pa11y-report.json"
     val timeStamp: Long = reportFolderPath.split("/").last.toLong
@@ -18,11 +17,11 @@ object Pa11yReport {
       case _ =>
         val alerts = parseJsonFile(pa11yReport).as[List[JsValue]].map {
           t =>
-            val code = getValue(t, "code")
-            val severity = getValue(t, "type")
-            val description = getValue(t, "message")
-            val selector = getValue(t, "selector")
-            val snippet = getValue(t, "context")
+            val code = getJsValue(t, "code")
+            val severity = getJsValue(t, "type")
+            val description = getJsValue(t, "message")
+            val selector = getJsValue(t, "selector")
+            val snippet = getJsValue(t, "context")
 
             Violation("pa11y", testSuite, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
         }

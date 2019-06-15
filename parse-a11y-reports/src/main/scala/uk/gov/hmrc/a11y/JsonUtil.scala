@@ -16,7 +16,7 @@ object JsonUtil {
     }
   }
 
-  def getValue(json: JsValue, field: String): JsValue = {
+  def getJsValue(json: JsValue, field: String): JsValue = {
 
     (json \ field).toEither match {
       case Left(s) => JsString("UNDEFINED")
