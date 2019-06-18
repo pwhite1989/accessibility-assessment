@@ -1,0 +1,18 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_1.1_1_1.H36",
+    "context": "<input src=\"../assets/test_images/submit.png\" type=\"image\">",
+    "message": "Image submit button missing an alt attribute. Specify a text alternative that describes the button's function, using the alt attribute.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > body > main > input"
+  },
+  {
+    "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.InputImage.Name",
+    "context": "<input src=\"../assets/test_images/submit.png\" type=\"image\">",
+    "message": "This imageinput element does not have a name available to an accessibility API. Valid names are: alt undefined, title undefined, aria-label undefined, aria-labelledby undefined.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > body > main > input"
+  }
+]

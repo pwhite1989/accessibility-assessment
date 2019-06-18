@@ -1,0 +1,18 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h3 class=\"heading-medium\">Opening times</h3>",
+    "message": "The heading structure is not logically nested. This h3 element should be an h2 to be properly nested.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > article > h3"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<div class=\"report-error\">\n    <script type=\"text/javascr...</div>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > div"
+  }
+]

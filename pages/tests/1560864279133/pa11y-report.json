@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H43,H63",
+    "context": "<table>\n<caption>Opening\ntimes</captio...</table>",
+    "message": "The relationship between td elements and their associated th elements is not defined. Use either the scope attribute on th elements, or the headers attribute on td elements.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > body > main > table"
+  }
+]

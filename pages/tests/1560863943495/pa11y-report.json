@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h4>3-Step Skin Care</h4>",
+    "message": "The heading structure is not logically nested. This h4 element should be an h2 to be properly nested.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > div > h4"
+  }
+]

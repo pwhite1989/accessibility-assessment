@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_1.1_1_1.H67.2",
+    "context": "<img alt=\"\" src=\"../assets/test_images/bbc-blocks-dark.png\">",
+    "message": "Img element is marked so that it is ignored by Assistive Technology.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > img"
+  }
+]

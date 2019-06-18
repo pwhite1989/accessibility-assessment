@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe height=\"100\" src=\"../example-pages/demo.html\" width=\"300\"></iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > body > main > iframe"
+  }
+]

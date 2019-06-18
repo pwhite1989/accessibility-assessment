@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<div class=\"focus-order-broken\">\n<a class=\"first\" href=\"#\">Firs...</div>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > div"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_1.2_1_2.F10",
+    "context": "<object data=\"foo\"><param name=\"wmode\" value=\"tran...</object>",
+    "message": "Check that this applet or plugin provides the ability to move the focus away from itself when using the keyboard.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > object"
+  }
+]

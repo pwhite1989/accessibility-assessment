@@ -1,0 +1,26 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864244967/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864244967/index.html",
+      "lastLine": 11,
+      "lastColumn": 8,
+      "firstColumn": 5,
+      "message": "Element “li” not allowed as child of element “main” in this context. (Suppressing further errors from this subtree.)",
+      "extract": "main>\n    <li>\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 4
+    }
+  ]
+}

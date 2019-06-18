@@ -1,0 +1,18 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h2>Language of content</h2>",
+    "message": "The heading structure is not logically nested. This h2 element appears to be the primary document heading, so should be an h1 element.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > h2:nth-child(1)"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h2>Language of content</h2>",
+    "message": "The heading structure is not logically nested. This h2 element should be an h1 to be properly nested.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > h2:nth-child(1)"
+  }
+]

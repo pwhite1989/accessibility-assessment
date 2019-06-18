@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<p>\n        After you have\n       ...</p>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > article > p:nth-child(2)"
+  }
+]

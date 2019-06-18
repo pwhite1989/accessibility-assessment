@@ -1,0 +1,26 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H43,H63",
+    "context": "<table class=\"numeric-results percentage-summary\">\n        <caption>How did each ...</table>",
+    "message": "The relationship between td elements and their associated th elements is not defined. Use either the scope attribute on th elements, or the headers attribute on td elements.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#wrapper > div:nth-child(2) > div > table:nth-child(12)"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H49.Small",
+    "context": "<small>Last updated: 13 April 2018</small>",
+    "message": "Semantic markup should be used to mark emphasised or special text so that it can be programmatically determined.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#wrapper > div:nth-child(2) > div > p:nth-child(13) > small"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage",
+    "context": "<a href=\"https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/\" rel=\"license\">\n                  Open Governm...</a>",
+    "message": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#footer > div > div > div:nth-child(1) > div > p:nth-child(1) > a"
+  }
+]

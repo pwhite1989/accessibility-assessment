@@ -1,0 +1,123 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 1,
+      "lastColumn": 69,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\" class=\"js no-touchevents details svg video\" style=\"\"><!--<!",
+      "hiliteStart": 0,
+      "hiliteLength": 69
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 6,
+      "lastColumn": 39,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “type” attribute is unnecessary for JavaScript resources.",
+      "extract": "\n\n        <script type=\"text/javascript\">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 31
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 68,
+      "lastColumn": 107,
+      "firstColumn": 2,
+      "subType": "warning",
+      "message": "The “type” attribute is unnecessary for JavaScript resources.",
+      "extract": "->\n\n\n\t\n\n\n\t<script src=\"http://localhost:9032/assets/2.241.0/javascripts/vendor/modernizr.js\" type=\"text/javascript\"></scri",
+      "hiliteStart": 10,
+      "hiliteLength": 106
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 78,
+      "lastColumn": 35,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The “type” attribute is unnecessary for JavaScript resources.",
+      "extract": "led\">\n    <script type=\"text/javascript\">docume",
+      "hiliteStart": 10,
+      "hiliteLength": 31
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 87,
+      "lastColumn": 76,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "\n\n        <header role=\"banner\" id=\"global-header\" class=\" with-proposition \">\n     ",
+      "hiliteStart": 10,
+      "hiliteLength": 68
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 105,
+      "lastColumn": 78,
+      "firstColumn": 13,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": "          <nav id=\"proposition-menu\" class=\"header__menu\" role=\"navigation\">\n\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 66
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 142,
+      "lastColumn": 31,
+      "firstColumn": 1,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "    \n    \n<main id=\"wrapper\" role=\"main\">\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 31
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 326,
+      "lastColumn": 71,
+      "firstColumn": 9,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "\n\n        <footer class=\"group js-footer\" id=\"footer\" role=\"contentinfo\">\n\n    ",
+      "hiliteStart": 10,
+      "hiliteLength": 63
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 392,
+      "lastColumn": 31,
+      "firstColumn": 1,
+      "subType": "warning",
+      "message": "The “type” attribute is unnecessary for JavaScript resources.",
+      "extract": "   \n    \n\n<script type=\"text/javascript\">var ss",
+      "hiliteStart": 10,
+      "hiliteLength": 31
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/business-tax-account-acceptance-tests/1560766531487/index.html",
+      "lastLine": 393,
+      "lastColumn": 105,
+      "firstColumn": 1,
+      "subType": "warning",
+      "message": "The “type” attribute is unnecessary for JavaScript resources.",
+      "extract": "</script>\n<script src=\"http://localhost:9032/assets/2.241.0/javascripts/application.min.js\" type=\"text/javascript\"></scri",
+      "hiliteStart": 10,
+      "hiliteLength": 105
+    }
+  ]
+}

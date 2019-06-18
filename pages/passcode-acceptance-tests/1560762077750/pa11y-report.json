@@ -1,0 +1,50 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Fail",
+    "context": "<strong class=\"phase-tag\">BETA</strong>",
+    "message": "This element has insufficient contrast at this conformance level. Expected a contrast ratio of at least 4.5:1, but text in this element has a contrast ratio of 2.78:1. Recommendation: change background to #cb4e0f.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#wrapper > div:nth-child(1) > div > div:nth-child(1) > p > strong"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage",
+    "context": "<span class=\"organisation-logo organisation-logo-medium\"> HM Revenue &amp; Customs </span>",
+    "message": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#wrapper > div:nth-child(1) > div > div:nth-child(2) > span"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h2>Please enter username and passw...</h2>",
+    "message": "The heading structure is not logically nested. This h2 element appears to be the primary document heading, so should be an h1 element.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > article > h2"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h2>Please enter username and passw...</h2>",
+    "message": "The heading structure is not logically nested. This h2 element should be an h1 to be properly nested.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > article > h2"
+  },
+  {
+    "code": "WCAG2AA.Principle4.Guideline4_1.4_1_2.H91.Fieldset.Name",
+    "context": "<fieldset>\n            <div class=\"form-f...</fieldset>",
+    "message": "This fieldset element does not have a name available to an accessibility API. Valid names are: legend element, aria-label undefined, aria-labelledby undefined.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > form > fieldset"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H71.NoLegend",
+    "context": "<fieldset>\n            <div class=\"form-f...</fieldset>",
+    "message": "Fieldset does not contain a legend element. All fieldsets should contain a legend element that describes a description of the field group.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > form > fieldset"
+  }
+]

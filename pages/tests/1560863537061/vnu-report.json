@@ -1,0 +1,39 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560863537061/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560863537061/index.html",
+      "lastLine": 10,
+      "lastColumn": 43,
+      "firstColumn": 3,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "ass=\"\">\n  <header id=\"global-header\" role=\"banner\">\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 41
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560863537061/index.html",
+      "lastLine": 441,
+      "lastColumn": 55,
+      "firstColumn": 3,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "main>\n\n\n  <footer id=\"footer\" class=\"group\" role=\"contentinfo\">\n    <",
+      "hiliteStart": 10,
+      "hiliteLength": 53
+    }
+  ]
+}

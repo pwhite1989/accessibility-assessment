@@ -1,0 +1,26 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864608839/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864608839/index.html",
+      "lastLine": 11,
+      "lastColumn": 70,
+      "firstColumn": 5,
+      "message": "Bad value “” for attribute “alt” on element “input”: Must not be empty.",
+      "extract": "main>\n    <input alt=\"\" src=\"../assets/test_images/submit.png\" type=\"image\">\n  </m",
+      "hiliteStart": 10,
+      "hiliteLength": 66
+    }
+  ]
+}

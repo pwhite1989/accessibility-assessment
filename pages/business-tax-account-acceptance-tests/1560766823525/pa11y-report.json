@@ -1,0 +1,42 @@
+[
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/9CHjVpoTpgQ?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(3) > iframe"
+  },
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/_QzNuPkf9Iw?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(14) > iframe"
+  },
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/pXeShjxZZGs?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(18) > iframe"
+  },
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/ZKKVd1XQQJA?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(23) > iframe"
+  },
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/htUNA2b7Gbk?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(29) > iframe"
+  }
+]

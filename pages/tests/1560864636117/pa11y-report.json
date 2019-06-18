@@ -1,0 +1,26 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H71.SameName",
+    "context": "<form><h4>Do you already have a perso...</form>",
+    "message": "If these radio buttons or check boxes require a further group-level description, they should be contained within a fieldset element.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > form"
+  },
+  {
+    "code": "WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2",
+    "context": "<form><h4>Do you already have a perso...</form>",
+    "message": "This form does not contain a submit button, which creates issues for those who cannot submit the form using the keyboard. Submit buttons are INPUT elements with type attribute \"submit\" or \"image\", or BUTTON elements with type \"submit\" or omitted/invalid.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > body > main > form"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h4>Do you already have a personal ...</h4>",
+    "message": "The heading structure is not logically nested. This h4 element should be an h2 to be properly nested.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > form > h4"
+  }
+]

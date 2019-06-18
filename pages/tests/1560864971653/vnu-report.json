@@ -1,0 +1,26 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864971653/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864971653/index.html",
+      "lastLine": 12,
+      "lastColumn": 37,
+      "firstColumn": 1,
+      "message": "Bad value “breadcrumbs” for attribute “role” on element “ol”.",
+      "extract": "adcrumb\">\n<ol class=\"group\" role=\"breadcrumbs\">\n<li><",
+      "hiliteStart": 10,
+      "hiliteLength": 37
+    }
+  ]
+}

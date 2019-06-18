@@ -1,0 +1,15 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864888688/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    }
+  ]
+}

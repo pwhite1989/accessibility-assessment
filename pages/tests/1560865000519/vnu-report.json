@@ -1,0 +1,26 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560865000519/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560865000519/index.html",
+      "lastLine": 11,
+      "lastColumn": 34,
+      "firstColumn": 8,
+      "message": "The “font” element is obsolete. Use CSS instead.",
+      "extract": "n>\n    <p><font face=\"aria\" size=\"5\">The si",
+      "hiliteStart": 10,
+      "hiliteLength": 27
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864348643/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864348643/index.html",
+      "lastLine": 11,
+      "lastColumn": 57,
+      "firstColumn": 5,
+      "message": "An “img” element must have an “alt” attribute, except under certain conditions. For details, consult guidance on providing text alternatives for images.",
+      "extract": "main>\n    <img src=\"../assets/test_images/bbc-blocks-dark.png\">\n  </m",
+      "hiliteStart": 10,
+      "hiliteLength": 53
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.BgImage",
+    "context": "<p>Any updates to your contact det...</p>",
+    "message": "This element's text is placed on a background image. Ensure the contrast ratio between the text and all covered parts of the image are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#latency-warning > p"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<div class=\"report-error\">\n    <script type=\"text/javascr...</div>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > div"
+  }
+]

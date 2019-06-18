@@ -1,0 +1,38 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864954468/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864954468/index.html",
+      "lastLine": 12,
+      "lastColumn": 14,
+      "firstColumn": 1,
+      "message": "Duplicate ID “nav”.",
+      "extract": "nav</div>\n<div id=\"nav\">page n",
+      "hiliteStart": 10,
+      "hiliteLength": 14
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864954468/index.html",
+      "lastLine": 11,
+      "lastColumn": 18,
+      "firstColumn": 5,
+      "subType": "warning",
+      "message": "The first occurrence of ID “nav” was here.",
+      "extract": "main>\n    <div id=\"nav\">global",
+      "hiliteStart": 10,
+      "hiliteLength": 14
+    }
+  ]
+}

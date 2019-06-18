@@ -1,0 +1,18 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h3>Notices preferences</h3>",
+    "message": "The heading structure is not logically nested. This h3 element appears to be the primary document heading, so should be an h1 element.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > aside > section > nav > div > h3"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h3>Notices preferences</h3>",
+    "message": "The heading structure is not logically nested. This h3 element should be an h1 to be properly nested.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > aside > section > nav > div > h3"
+  }
+]

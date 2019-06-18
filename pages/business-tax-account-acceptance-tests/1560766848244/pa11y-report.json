@@ -1,0 +1,50 @@
+[
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/L5i8x_eu-U4?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(4) > iframe"
+  },
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/NQMLcf-hF7c?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(9) > iframe"
+  },
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/s24M389lWJg?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(16) > iframe"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<p>You can’t appeal a penalty onli...</p>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > article > p:nth-child(22)"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<p>\n        You’ll need a breakdow...</p>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "#content > article > p:nth-child(26)"
+  },
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_1.H64.1",
+    "context": "<iframe src=\"https://www.youtube.com/embed/jYqUzX3Sx4k?autoplay=0&amp;rel=0\" allowfullscreen=\"\">\n    </iframe>",
+    "message": "Iframe element requires a non-empty title attribute that identifies the frame.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "#content > article > div:nth-child(30) > iframe"
+  }
+]

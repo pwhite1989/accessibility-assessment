@@ -1,0 +1,34 @@
+[
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.NoTitleEl",
+    "context": "<head>\n</head>",
+    "message": "A title should be provided for the document, using a non-empty title element in the head section.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > head"
+  },
+  {
+    "code": "WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.2",
+    "context": "<html><head>\n</head>\n<body>\n  <div cl...</html>",
+    "message": "The html element should have a lang or xml:lang attribute which describes the language of the document.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h2>Language of content</h2>",
+    "message": "The heading structure is not logically nested. This h2 element appears to be the primary document heading, so should be an h1 element.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > h2:nth-child(2)"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1_A.G141",
+    "context": "<h2>Language of content</h2>",
+    "message": "The heading structure is not logically nested. This h2 element should be an h1 to be properly nested.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > h2:nth-child(2)"
+  }
+]

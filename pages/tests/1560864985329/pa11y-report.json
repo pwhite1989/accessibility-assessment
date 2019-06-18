@@ -1,0 +1,10 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3_F24.F24.FGColour",
+    "context": "<p style=\"color: blue;\">The colour of this text is set ...</p>",
+    "message": "Check that this element has an inherited background colour or image to complement the corresponding inline foreground colour.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > p"
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "code": "WCAG2AA.Principle2.Guideline2_4.2_4_2.H25.1.EmptyTitle",
+    "context": "<title></title>",
+    "message": "The title element in the head section should be non-empty.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > head > title"
+  },
+  {
+    "code": "WCAG2AA.Principle3.Guideline3_1.3_1_1.H57.3.Lang",
+    "context": null,
+    "message": "The language specified in the lang attribute of the document element does not appear to be well-formed.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": ""
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H42.2",
+    "context": "<h1></h1>",
+    "message": "Heading tag found with no content. Text that is not intended as a heading should not be marked up with heading tags.",
+    "type": "error",
+    "typeCode": 1,
+    "selector": "html > body > h1"
+  }
+]

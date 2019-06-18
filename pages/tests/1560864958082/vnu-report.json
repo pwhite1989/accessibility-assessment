@@ -1,0 +1,27 @@
+{
+  "messages": [
+    {
+      "type": "error",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864958082/index.html",
+      "lastLine": 1,
+      "lastColumn": 16,
+      "firstColumn": 1,
+      "message": "Start tag seen without seeing a doctype first. Expected “<!DOCTYPE html>”.",
+      "extract": "<html lang=\"en\"><head>",
+      "hiliteStart": 0,
+      "hiliteLength": 16
+    },
+    {
+      "type": "info",
+      "url": "file:/Users/dan/dev/hmrc/page-capture-spike/pages/tests/1560864958082/index.html",
+      "lastLine": 13,
+      "lastColumn": 54,
+      "firstColumn": 1,
+      "subType": "warning",
+      "message": "The “navigation” role is unnecessary for element “nav”.",
+      "extract": "V.UK</h2>\n<nav aria-labelledby=\"parent-other\" role=\"navigation\">\n<ul>\n",
+      "hiliteStart": 10,
+      "hiliteLength": 54
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs",
+    "context": "<p class=\"wont-expand\">This service is for England and...</p>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > div > p"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_3.1_3_1.H48",
+    "context": "<p class=\"wont-expand\">This service is for England and...</p>",
+    "message": "If this element contains a navigation section, it is recommended that it be marked up as a list.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > div > p"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs",
+    "context": "<a href=\"https://www.justice-ni.gov.uk/topics/prisons/prison-visits\">prisons in Northern Ireland</a>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > div > p > a:nth-child(1)"
+  },
+  {
+    "code": "WCAG2AA.Principle1.Guideline1_4.1_4_3.G18.Abs",
+    "context": "<a href=\"http://www.sps.gov.uk/Corporate/Prisons/Prisons.aspx\">Scotland</a>",
+    "message": "This element is absolutely positioned and the background color can not be determined. Ensure the contrast ratio between the text and all covered parts of the background are at least 4.5:1.",
+    "type": "warning",
+    "typeCode": 2,
+    "selector": "html > body > main > div > p > a:nth-child(2)"
+  }
+]
