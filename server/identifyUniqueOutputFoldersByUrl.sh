@@ -1,10 +1,11 @@
 #!/bin/bash
 
 logFileName="service.log"
-servicePort="9856"
-uniquePageDirectory="business-multi-factor-authentication-acceptance-tests"
+#servicePort="9856"
+uniquePageDirectory="tests"
 
-read -a uniqueUrls <<< $(cat $logFileName | grep http:// | grep $servicePort | sed -n -e 's/^.*\(http:\/\/\)/\1/p' | tr -d \'\, | sort | uniq)
+#read -a uniqueUrls <<< $(cat $logFileName | grep http:// | grep $servicePort | sed -n -e 's/^.*\(http:\/\/\)/\1/p' | tr -d \'\, | sort | uniq)
+read -a uniqueUrls <<< $(cat $logFileName | grep http:// | grep -v /test-cases | grep -v links-link-to--invalid-hypertext-reference.html | grep -v content-content-is-not-organised-into-well-defined-groups-or-chunks-using-headings-lists-and | sed -n -e 's/^.*\(http:\/\/\)/\1/p' | tr -d \'\, | sort | uniq)
 mkdir -p $uniquePageDirectory
 
 for url in "${uniqueUrls[@]}"
