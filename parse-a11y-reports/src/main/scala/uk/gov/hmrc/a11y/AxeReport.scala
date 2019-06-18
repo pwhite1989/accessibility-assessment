@@ -5,10 +5,10 @@ import uk.gov.hmrc.a11y.JsonUtil._
 
 object AxeReport {
 
-  def apply(reportFolderPath: String, testSuite: String, pageUrl: String, testRunTimeStamp: String): Unit = {
+  def apply(reportFolderPath: String, testSuite: String, path: String, pageUrl: String, testRunTimeStamp: String): Unit = {
     val axeReport: String = s"$reportFolderPath/axe-report.json"
     val parsedReport: List[JsValue] = parseJsonFile(axeReport).as[List[JsValue]]
-    val timeStamp: Long = reportFolderPath.split("/").last.toLong
+    val timeStamp: String = reportFolderPath.split("/").last
 
 
     val violationsList: List[JsValue] = parsedReport.flatMap(reports => (reports \ "violations").as[List[JsValue]])
@@ -22,7 +22,7 @@ object AxeReport {
         val selector = getJsValue(nodes.head, "target")
         val snippet = getJsValue(nodes.head, "html")
 
-        Violation("axe", testSuite, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
+        Violation("axe", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
     }
 
     val inCompleteList: List[JsValue] = parsedReport.flatMap(report => (report \ "incomplete").as[List[JsValue]])
@@ -35,7 +35,7 @@ object AxeReport {
         val nodes = (t \ "nodes").as[List[JsValue]]
         val selector = getJsValue(nodes.head, "target")
         val snippet = getJsValue(nodes.head, "html")
-        Violation("axe", testSuite, pageUrl, testRunTimeStamp, timeStamp, code, severity, JsString(s"Incomplete Alert: $description"), selector, snippet)
+        Violation("axe", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, JsString(s"Incomplete Alert: $description"), selector, snippet)
     }
 
     Output.writeOutput(violationAlerts ++ inCompleteAlerts)

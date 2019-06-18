@@ -45,26 +45,32 @@ object ParseA11yReport {
         reportDirectoriesPath.foreach {
           reportDirectoryPath =>
             println("********** Generating AXE REPORT ***********")
-            AxeReport(reportDirectoryPath, testSuiteName, pageUrl(reportDirectoryPath), testRunTimeStamp)
+            AxeReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
 
             println("********** Generating PA11Y REPORT ***********")
-            Pa11yReport(reportDirectoryPath, testSuiteName, pageUrl(reportDirectoryPath), testRunTimeStamp)
+            Pa11yReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
 
             println("********** Generating VNU REPORT ***********")
-            VnuReport(reportDirectoryPath, testSuiteName, pageUrl(reportDirectoryPath), testRunTimeStamp)
+            VnuReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
         }
     }
     Output.closeFileWriter()
   }
 
-  private def pageUrl(reportFolderPath: String): String = {
-    val fileData = s"$reportFolderPath/data"
-    val bufferedSource = Source.fromFile(fileData)
+  private def path(reportFolderPath: String): String = {
+    val bufferedSource = Source.fromFile(s"$reportFolderPath/data")
     val url = bufferedSource.getLines().take(1).toList.head
+    val pattern = "http:\\/\\/localhost:[0-9]{4,5}(.*)".r
+    val pattern(path) = url
     bufferedSource.close
-    url
+    path
   }
 
+  private def page(reportDirectoryPath: String): String = {
+    val pattern = ".*(pages)(.*)".r
+    val pattern(parent, subPath) = reportDirectoryPath
+    s"http://localhost:6010${subPath}/index.html"
+  }
 }
 
 

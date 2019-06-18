@@ -7,10 +7,10 @@ import uk.gov.hmrc.a11y.JsonUtil._
 
 object Pa11yReport {
 
-  def apply(reportFolderPath: String, testSuite: String,  pageUrl: String, testRunTimeStamp: String): Unit = {
+  def apply(reportFolderPath: String, testSuite: String, path: String, pageUrl: String, testRunTimeStamp: String): Unit = {
 
     val pa11yReport: String = s"$reportFolderPath/pa11y-report.json"
-    val timeStamp: Long = reportFolderPath.split("/").last.toLong
+    val timeStamp: String = reportFolderPath.split("/").last
 
     new File(pa11yReport).length() match {
       case 0 => println(s"Pa11y report is empty for $pa11yReport")
@@ -23,7 +23,7 @@ object Pa11yReport {
             val selector = getJsValue(t, "selector")
             val snippet = getJsValue(t, "context")
 
-            Violation("pa11y", testSuite, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
+            Violation("pa11y", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
         }
         Output.writeOutput(alerts)
     }

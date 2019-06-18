@@ -13,11 +13,10 @@ object Output {
   def writeOutput(violationsList: List[Violation]): Unit = {
     implicit val reportWrites: OWrites[Violation] = Json.writes[Violation]
     violationsList.foreach { v =>
-      println(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
+      //println(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
       outputFileWriter.write(s"""{"index":{"_index":"accessibility","_type":"alerts"}}\n${Json.toJson(v).toString()}\n""")
     }
   }
 
   def closeFileWriter(): Unit = outputFileWriter.close()
-
 }
