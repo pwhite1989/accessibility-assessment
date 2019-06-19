@@ -26,3 +26,5 @@ yarn-error.log
 server/node_modules
 server/output/*
 !server/output/.gitkeep
+apps/esdata/*
+report-*
