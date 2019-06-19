@@ -69,10 +69,6 @@ object ParseA11yReport {
   private def page(reportDirectoryPath: String): String = {
     val pattern = ".*(pages)(.*)".r
     val pattern(parent, subPath) = reportDirectoryPath
-    s"http://localhost:6010${subPath}/index.html"
+    s"http://localhost:6002${subPath}/index.html"
   }
 }
-
-
-
-
