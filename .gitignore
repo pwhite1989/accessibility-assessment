@@ -7,7 +7,7 @@ lib_managed
 tmp
 .history
 dist
-/.idea
+.idea
 /*.iml
 /*.ipr
 /out
