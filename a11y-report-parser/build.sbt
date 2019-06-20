@@ -1,4 +1,4 @@
-val appName = "parse-a11y-reports"
+val appName = "a11y-report-parser"
 
 version := "0.1"
 
@@ -12,7 +12,7 @@ val compileDependencies = Seq(
 )
 
 // set the main class
-mainClass in (Compile, packageBin) := Some("uk.gov.hmrc.a11y.ParseA11yReport")
+mainClass in (Compile, packageBin) := Some("uk.gov.hmrc.a11y.ReportParser")
 
 lazy val parseA11YReports = Project(appName, file("."))
   .settings(

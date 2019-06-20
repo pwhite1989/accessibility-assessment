@@ -13,7 +13,7 @@ object VnuReport {
     val timeStamp: String = reportFolderPath.split("/").last
 
     new File(vnuReport).length() match {
-      case 0 => println(s"vnu report is empty for $vnuReport")
+      case 0 => println(s"\t- $vnuReport does not exist")
       case _ =>
         val alerts: List[Violation] = (parseJsonFile(vnuReport) \ "messages").as[List[JsValue]].map {
           t =>

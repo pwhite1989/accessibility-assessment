@@ -3,7 +3,7 @@ package uk.gov.hmrc.a11y
 import java.io.FileWriter
 
 import play.api.libs.json.{Json, OWrites}
-import uk.gov.hmrc.a11y.ParseA11yReport.currentDirectoryPath
+import uk.gov.hmrc.a11y.ReportParser.currentDirectoryPath
 
 object Output {
 
@@ -18,5 +18,8 @@ object Output {
     }
   }
 
-  def closeFileWriter(): Unit = outputFileWriter.close()
+  def closeFileWriter(): String = {
+    outputFileWriter.close()
+    reportFileName
+  }
 }

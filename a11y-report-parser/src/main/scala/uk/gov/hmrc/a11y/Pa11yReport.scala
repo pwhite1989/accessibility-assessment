@@ -13,7 +13,7 @@ object Pa11yReport {
     val timeStamp: String = reportFolderPath.split("/").last
 
     new File(pa11yReport).length() match {
-      case 0 => println(s"Pa11y report is empty for $pa11yReport")
+      case 0 => println(s"\t- ${pa11yReport} does not exist")
       case _ =>
         val alerts: List[Violation] = parseJsonFile(pa11yReport).as[List[JsValue]].map {
           t =>

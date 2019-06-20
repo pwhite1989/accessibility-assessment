@@ -7,18 +7,19 @@ import play.api.libs.json.Json
 
 import scala.io.Source
 
-object ParseA11yReport {
+object ReportParser {
 
   val currentDirectoryPath: String = System.getProperty("user.dir")
   val rootDirectoryPath: String = new File(currentDirectoryPath).getParent
 
   def main(args: Array[String]): Unit = {
-    println("********** Generating A11Y report ***********")
-    generateReport()
-    println("********** Completed ***********")
+    println("********** Generating alert report ***********")
+    val fileName: String = generateReport()
+    println("******************** Done ********************")
+    println(s"see ${fileName}")
   }
 
-  def generateReport(): Unit = {
+  def generateReport(): String = {
 
     // Path of all directories under page-capture-spike/pages.
     // example: page-capture-spike/pages/trusts-unique-pages
@@ -40,17 +41,11 @@ object ParseA11yReport {
         val earliestTimeStamp: Long = reportDirectoriesPath.map(_.split("/").last.toLong).sortWith(_ < _).head
         val testRunTimeStamp: String = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(earliestTimeStamp)
 
-        //For each report directory i.e page-capture-spike/pages/trusts-unique-pages/1560332773877
-        // axe-report.json, pa11y-report.json, vnu-report.json is parsed.
         reportDirectoriesPath.foreach {
           reportDirectoryPath =>
-            println("********** Generating AXE REPORT ***********")
+            println(s"Parsing: ${reportDirectoryPath}")
             AxeReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
-
-            println("********** Generating PA11Y REPORT ***********")
             Pa11yReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
-
-            println("********** Generating VNU REPORT ***********")
             VnuReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
         }
     }
