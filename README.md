@@ -60,7 +60,7 @@ To start elasticsearch, kibana and the http server (nginx) execute: `./start-app
 
 To generate an file for bulk uploading alerts to ElasticSearch, execute `./generate-alert-data.sh` from the root directory.  The files (meta data and a11y tool report files) for each page captured in the `./pages` directory will be parsed, and alert records will be appended to a file named something like `report-1560872696` in the root directory.
 
-To load the data using the json schema detailed below, run `./load-data.sh`
+To load the data using the json schema detailed below, run `./load-data.sh report-1560872696`
 
 In the Kibana UI, go to **Management -> Saved Objects** and click **Import**.  Select the `visualistation/kibana-saved-objects.json` file to import some basic dashboards.
 
