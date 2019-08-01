@@ -14,7 +14,7 @@ app.post('/page-data', (req, res) => {
   logData.pageHTML = logData.pageHTML.substr(0, 100) + '...'
   logData.files = Object.keys(logData.files)
 
-  const fileList = Object.assign({}, body.files, {'index.html': body.pageHTML})
+  const fileList = Object.assign({}, body.files, {'index.html': '<!DOCTYPE html>\n' + body.pageHTML})
 
   fs.mkdirSync(rootDir)
 

@@ -21,7 +21,7 @@ function assessPage {
 
 }
 
-read -a directories <<< $(find $1 -type d | grep 1560 )
+read -a directories <<< $(find $1 -type d )# | grep 1564 ) #include this grep to strip non-page folders from the assessment
 
 for dir in "${directories[@]}"
 do
