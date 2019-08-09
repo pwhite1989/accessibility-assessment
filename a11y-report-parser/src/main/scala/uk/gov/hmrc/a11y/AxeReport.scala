@@ -13,16 +13,19 @@ object AxeReport {
 
     val violationsList: List[JsValue] = parsedReport.flatMap(reports => (reports \ "violations").as[List[JsValue]])
 
-    val violationAlerts: List[Violation] = violationsList.map {
+    val violationAlerts: List[Violation] = violationsList.flatMap {
       t =>
-        val code = getJsValue(t, "id")
-        val severity = getJsValue(t, "impact")
-        val description = getJsValue(t, "description")
         val nodes = (t \ "nodes").as[List[JsValue]]
-        val selector = getJsValue(nodes.head, "target")
-        val snippet = getJsValue(nodes.head, "html")
+        nodes.map { node =>
+        val code = getJsValue(t, "id")
+        val severity = getJsValue(node, "impact")
+        val description = getJsValue(node, "failureSummary")
+        val selector = getJsValue(node, "target")
+        val snippet = getJsValue(node, "html")
+        val helpUrl = getJsValue(t, "helpUrl")
 
-        Violation("axe", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
+        Violation("axe", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet, helpUrl)
+        }
     }
 
     val inCompleteList: List[JsValue] = parsedReport.flatMap(report => (report \ "incomplete").as[List[JsValue]])
@@ -35,7 +38,8 @@ object AxeReport {
         val nodes = (t \ "nodes").as[List[JsValue]]
         val selector = getJsValue(nodes.head, "target")
         val snippet = getJsValue(nodes.head, "html")
-        Violation("axe", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, JsString(s"Incomplete Alert: $description"), selector, snippet)
+        val helpUrl = getJsValue(t, "helpUrl")
+        Violation("axe", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, JsString(s"Incomplete Alert: $description"), selector, snippet, helpUrl)
     }
 
     Output.writeOutput(violationAlerts ++ inCompleteAlerts)

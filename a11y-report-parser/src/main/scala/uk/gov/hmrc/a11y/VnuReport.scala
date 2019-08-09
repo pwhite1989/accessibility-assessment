@@ -2,7 +2,7 @@ package uk.gov.hmrc.a11y
 
 import java.io.File
 
-import play.api.libs.json.{JsValue, Json}
+import play.api.libs.json.{JsString, JsValue, Json}
 import uk.gov.hmrc.a11y.JsonUtil._
 
 object VnuReport {
@@ -22,8 +22,8 @@ object VnuReport {
             val description = getJsValue(t, "message")
             val selector = getJsValue(t, "selector")
             val snippet = getJsValue(t, "extract")
-
-            Violation("vnu", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet)
+            val helpUrl = JsString("")
+            Violation("vnu", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet, helpUrl)
         }
         Output.writeOutput(alerts)
     }
