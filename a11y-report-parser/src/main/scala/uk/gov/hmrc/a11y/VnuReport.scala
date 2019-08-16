@@ -19,11 +19,13 @@ object VnuReport {
           t =>
             val code = getJsValue(t, "message")  //as vnu reports don't output the concept of an alert type or code, we use the message.
             val severity = getJsValue(t, "type")
+            val alertLevel = AlertLevel(getJsValue(t, "type"))
             val description = JsString(getJsValue(t, "message").toString().replaceAll("\\\\[nrt]|\\\"", ""))
             val selector = getJsValue(t, "selector")
             val snippet = getJsValue(t, "extract")
-            val helpUrl = JsString("")
-            Violation("vnu", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet, helpUrl)
+            val helpUrl = JsString("Not Available")
+            Violation("vnu", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, alertLevel, description,
+              selector, snippet, helpUrl)
         }
         Output.writeOutput(alerts)
     }

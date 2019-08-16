@@ -14,11 +14,10 @@ object ReportParser {
 
   def main(args: Array[String]): Unit = {
     println("********** Generating alert report ***********")
-    println ("something else")
-    println("location: " + testSuiteRootDirectory)
+    println("Test Suites Directory: " + testSuiteRootDirectory)
     val fileName: String = generateReport()
     println("******************** Done ********************")
-    println(s"see ${fileName}")
+    println(s"Parsed Output: $fileName")
   }
 
   def generateReport(): String = {
@@ -44,7 +43,7 @@ object ReportParser {
 
         reportDirectoriesPath.foreach {
           reportDirectoryPath =>
-            println(s"Parsing: ${reportDirectoryPath}")
+            println(s"Parsing: $reportDirectoryPath")
             AxeReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
             Pa11yReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
             VnuReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
@@ -63,8 +62,8 @@ object ReportParser {
   }
 
   private def page(reportDirectoryPath: String): String = {
-    val pattern = s"(${testSuiteRootDirectory})(.*)".r
+    val pattern = s"($testSuiteRootDirectory)(.*)".r
     val pattern(parent, subPath) = reportDirectoryPath
-    s"http://localhost:6002${subPath}/index.html"
+    s"http://localhost:6002$subPath/index.html"
   }
 }

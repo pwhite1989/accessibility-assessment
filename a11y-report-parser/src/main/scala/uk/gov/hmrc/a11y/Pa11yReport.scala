@@ -19,13 +19,15 @@ object Pa11yReport {
         val alerts: List[Violation] = parseJsonFile(pa11yReport).as[List[JsValue]].map {
           t =>
             val code = getJsValue(t, "code")
-            val severity = getJsValue(t, "type")
+            val severity = JsString("Unassigned")
+            val alertLevel = AlertLevel(getJsValue(t, "type"))
             val description = JsString(getJsValue(t, "message").toString().replaceAll("\\\\[nrt]|\\\"", ""))
             val selector = getJsValue(t, "selector")
             val snippet = getJsValue(t, "context")
             val helpUrl = JsString(Wcag2ReferenceUrl)
 
-            Violation("pa11y", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, description, selector, snippet, helpUrl)
+            Violation("pa11y", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, alertLevel,
+              description, selector, snippet, helpUrl)
         }
         Output.writeOutput(alerts)
     }
