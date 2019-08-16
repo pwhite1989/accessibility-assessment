@@ -7,7 +7,7 @@ import uk.gov.hmrc.a11y.ReportParser.currentDirectoryPath
 
 object Output {
 
-  val reportFileName = s"report-${System.currentTimeMillis / 1000}"
+  val reportFileName = s"bulk-upload-${System.currentTimeMillis / 1000}"
   val outputFileWriter = new FileWriter(s"$currentDirectoryPath/$reportFileName", true)
 
   def writeOutput(violationsList: List[Violation]): Unit = {

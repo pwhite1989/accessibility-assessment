@@ -10,10 +10,12 @@ import scala.io.Source
 object ReportParser {
 
   val currentDirectoryPath: String = System.getProperty("user.dir")
-  val rootDirectoryPath: String = new File(currentDirectoryPath).getParent
+  val testSuiteRootDirectory: String = System.getProperty("test.suites.location")
 
   def main(args: Array[String]): Unit = {
     println("********** Generating alert report ***********")
+    println ("something else")
+    println("location: " + testSuiteRootDirectory)
     val fileName: String = generateReport()
     println("******************** Done ********************")
     println(s"see ${fileName}")
@@ -23,19 +25,18 @@ object ReportParser {
 
     // Path of all directories under page-capture-spike/pages.
     // example: page-capture-spike/pages/trusts-unique-pages
-    val testDirectoriesPath: Array[String] = new File(s"$rootDirectoryPath/pages").listFiles()
+    val testDirectoriesPath: Array[String] = new File(s"$testSuiteRootDirectory").listFiles()
       .filter(_.isDirectory)
-      .map(s"$rootDirectoryPath/pages/" + _.getName)
+      .map(s"$testSuiteRootDirectory/" + _.getName)
 
     testDirectoriesPath.foreach {
       testDirectoryPath =>
         val testSuiteName = testDirectoryPath.split("/").last
-
         // Path of directories under each test Directory which contain a11y reports for every page of that test suite.
         // example: page-capture-spike/pages/trusts-unique-pages/1560332773877
-        val reportDirectoriesPath: Array[String] = new File(testDirectoryPath).listFiles()
+        val reportDirectoriesPath: Array[String] = new File(testDirectoryPath + "/output" ).listFiles()
           .filter(_.isDirectory)
-          .map(s"$testDirectoryPath/" + _.getName)
+          .map(s"$testDirectoryPath/output/" + _.getName)
 
         //The earliest report's timestamp, stored as the report directory name, is used as the value of 'TestRun' Json field in the output
         val earliestTimeStamp: Long = reportDirectoriesPath.map(_.split("/").last.toLong).sortWith(_ < _).head
@@ -62,7 +63,7 @@ object ReportParser {
   }
 
   private def page(reportDirectoryPath: String): String = {
-    val pattern = ".*(pages)(.*)".r
+    val pattern = s"(${testSuiteRootDirectory})(.*)".r
     val pattern(parent, subPath) = reportDirectoryPath
     s"http://localhost:6002${subPath}/index.html"
   }

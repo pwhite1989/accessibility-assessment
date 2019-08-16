@@ -20,7 +20,7 @@ object Pa11yReport {
           t =>
             val code = getJsValue(t, "code")
             val severity = getJsValue(t, "type")
-            val description = getJsValue(t, "message")
+            val description = JsString(getJsValue(t, "message").toString().replaceAll("\\\\[nrt]|\\\"", ""))
             val selector = getJsValue(t, "selector")
             val snippet = getJsValue(t, "context")
             val helpUrl = JsString(Wcag2ReferenceUrl)

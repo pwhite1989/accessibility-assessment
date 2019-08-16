@@ -19,7 +19,7 @@ object AxeReport {
         nodes.map { node =>
         val code = getJsValue(t, "id")
         val severity = getJsValue(node, "impact")
-        val description = getJsValue(node, "failureSummary")
+        val description = JsString(getJsValue(node, "failureSummary").toString().replaceAll("\\\\[nrt]|\\\"", ""))
         val selector = getJsValue(node, "target")
         val snippet = getJsValue(node, "html")
         val helpUrl = getJsValue(t, "helpUrl")
