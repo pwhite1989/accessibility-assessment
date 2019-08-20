@@ -13,13 +13,13 @@ cp server/*.log .
 cp -r server/output output
 rm -rf server/
 
-# TODO: Refactor assessAllPages.sh to run from USER_HOME against a given directory (first param...)
-cd ~/test-suites
+# TODO: Refactor assessAllPages.sh to run from against a given directory (first param...)
+cd ${HOME}/test-suites
 source assessAllPages.sh ${TEST_SUITE_NAME}
 
 # Run the report parser
 cd ~/a11y-report-parser
-sbt -Dtest.suites.location="${USER_HOME}/test-suites" "run-main uk.gov.hmrc.a11y.ReportParser"
+sbt -Dtest.suites.location="${HOME}/test-suites" "run-main uk.gov.hmrc.a11y.ReportParser"
 
 # Find the bulk upload file and load it to the given ELS instance
 cd ~
