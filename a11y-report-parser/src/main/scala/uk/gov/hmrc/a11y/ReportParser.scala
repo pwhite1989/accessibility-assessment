@@ -44,9 +44,9 @@ object ReportParser {
         reportDirectoriesPath.foreach {
           reportDirectoryPath =>
             println(s"Parsing: $reportDirectoryPath")
-            AxeReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
-            Pa11yReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
-            VnuReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath), testRunTimeStamp)
+            AxeReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath, testSuiteName), testRunTimeStamp)
+            Pa11yReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath, testSuiteName), testRunTimeStamp)
+            VnuReport(reportDirectoryPath, testSuiteName, path(reportDirectoryPath), page(reportDirectoryPath, testSuiteName), testRunTimeStamp)
         }
     }
     Output.closeFileWriter()
@@ -61,9 +61,9 @@ object ReportParser {
     path
   }
 
-  private def page(reportDirectoryPath: String): String = {
-    val pattern = s"($testSuiteRootDirectory)(.*)".r
+  private def page(reportDirectoryPath: String, testSuiteName: String): String = {
+    val pattern = s"($testSuiteRootDirectory/$testSuiteName)(/output.*)".r
     val pattern(parent, subPath) = reportDirectoryPath
-    s"http://localhost:6002$subPath/index.html"
+    s"${sys.env("JENKINS_ARTIFACT_LOCATION")}$subPath/index.html"
   }
 }
