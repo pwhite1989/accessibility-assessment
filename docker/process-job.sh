@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker run --cpus 3 -v $(pwd)/files/entry_point.sh:/opt/scripts/entry_point.sh -v $(pwd)/files/assessAllPages.sh:/home/seluser/test-suites/assessAllPages.sh -e TEST_SUITE_NAME=${1} -e JENKINS_USERNAME=${JENKINS_USERNAME} -e JENKINS_API_KEY=${JENKINS_API_KEY} accessibility-assessment:1.0.0
+docker run --cpus 3 -v $(pwd)/files/entry_point.sh:/opt/scripts/entry_point.sh -v $(pwd)/files/assessAllPages.sh:/home/seluser/test-suites/assessAllPages.sh -v $(pwd)/files/a11y-report-parser:/home/seluser/a11y-report-parser -e TEST_SUITE_NAME=${1} -e JENKINS_USERNAME=${JENKINS_USERNAME} -e JENKINS_API_KEY=${JENKINS_API_KEY} accessibility-assessment:1.0.0
 #docker run -e TEST_SUITE_NAME=${1} -e JENKINS_USERNAME=${jenkins_username} -e JENKINS_API_KEY=${jenkins_api_key} accessibility-assessment:1.0.0
