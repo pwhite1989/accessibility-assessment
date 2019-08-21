@@ -10,7 +10,7 @@ function runCommand() {
     until [ $counter -gt 2 ]
     do
         eval "$cmd"
-        if [ -f $reportFile ]
+        if [ -f $reportFile ] && [ -s $reportFile ]
         then
             break 1
         else
