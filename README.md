@@ -1,12 +1,3 @@
-
-TODO:
-1. Implement the URL val in report ReportParser
-2. add versions to a11y tools in Dockerfile
-3. investigate parallel execution of tools within the docker image
-4. include date value for narrowing searches based on test execution
-5. include URL value in the ELS instance
-6. investigate auto dashboard creation in version 6.8.0 of els/kibana
-
 # Spike: Automating accessibility testing in the build
 This project contains the output of the investigation conducted by Platform Test into automating accessibility testing in the build.
 

@@ -1,6 +1,7 @@
 package uk.gov.hmrc.a11y
 
 import java.io.File
+import java.nio.file.{Files, Paths}
 
 import play.api.libs.json.{JsString, JsValue, Json}
 import uk.gov.hmrc.a11y.JsonUtil._
@@ -12,24 +13,23 @@ object VnuReport {
     val vnuReport: String = s"$reportFolderPath/vnu-report.json"
     val timeStamp: String = reportFolderPath.split("/").last
 
-    new File(vnuReport).length() match {
-      case 0 => println(s"\t- $vnuReport does not exist")
-      case _ =>
-        val alerts: List[Violation] = (parseJsonFile(vnuReport) \ "messages").as[List[JsValue]].map {
-          t =>
-            val code = getJsValue(t, "message")  //as vnu reports don't output the concept of an alert type or code, we use the message.
-            val severity = getJsValue(t, "type")
-            val alertLevel = AlertLevel(getJsValue(t, "type"))
-            val description = JsString(getJsValue(t, "message").toString().replaceAll("\\\\[nrt]|\\\"", ""))
-            val selector = getJsValue(t, "selector")
-            val snippet = getJsValue(t, "extract")
-            val helpUrl = JsString("Not Available")
-            Violation("vnu", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, alertLevel, description,
-              selector, snippet, helpUrl)
-        }
-        Output.writeOutput(alerts)
+    if ( !Files.exists(Paths.get(vnuReport)) || new File(vnuReport).length() == 0 ) {
+      println(s"MISSING FILE:\t$vnuReport does not exist")
+    } else {
+      val alerts: List[Violation] = (parseJsonFile(vnuReport) \ "messages").as[List[JsValue]].map {
+        violation =>
+          val code = getJsValue(violation, "message")  //as vnu reports don't output the concept of an alert type or code, we use the message.
+          val severity = getJsValue(violation, "type")
+          val alertLevel = AlertLevel(getJsValue(violation, "type"))
+          val description = JsString(getJsValue(violation, "message").toString().replaceAll("\\\\[nrt]|\\\"", ""))
+          val selector = getJsValue(violation, "selector")
+          val snippet = getJsValue(violation, "extract")
+          val helpUrl = JsString("Not Available")
+          Violation("vnu", testSuite, path, pageUrl, testRunTimeStamp, timeStamp, code, severity, alertLevel, description,
+            selector, snippet, helpUrl)
+      }
+      Output.writeOutput(alerts)
     }
-
   }
 
 }
