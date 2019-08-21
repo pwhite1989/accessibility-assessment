@@ -3,7 +3,8 @@
 # Retrieve a zip file from the last successful build.
 test_suite_url=$(curl -s --user ${JENKINS_USERNAME}:${JENKINS_API_KEY} ${JENKINS_BASE_URI}/${JENKINS_TEST_FOLDER}/a11y-test-${TEST_SUITE_NAME}/api/json | jq '.lastSuccessfulBuild | .url' | tr -d '"')
 
-curl -L -o ${TEST_SUITE_NAME}.zip --user ${JENKINS_USERNAME}:${JENKINS_API_KEY} ${test_suite_url}/artifact/automated-a11y-testing/server/*zip*/server.zip
+export JENKINS_ARTIFACT_LOCATION=${test_suite_url}artifact/automated-a11y-testing/server
+curl -L -o ${TEST_SUITE_NAME}.zip --user ${JENKINS_USERNAME}:${JENKINS_API_KEY} "${JENKINS_ARTIFACT_LOCATION}"/*zip*/server.zip
 
 # Unzip the file - restructure files/directories to suite assessAllPages.sh processing and serving of pages via jenkins:
 # TODO:  We may want to update Jenkins and the assessAllPages.sh script rather than have this here...
