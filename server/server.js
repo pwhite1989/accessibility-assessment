@@ -19,7 +19,7 @@ app.post('/page-data', (req, res) => {
   if(!capturedUrls.includes(body.pageURL) && !excludeUrls.includes(body.pageURL)) {
     capturedUrls.push(body.pageURL)
     const fileList = Object.assign({}, body.files, {'index.html': '<!DOCTYPE html>\n' + body.pageHTML}, {'data': body.pageURL})
-    fs.mkdirSync(rootDir)
+    fs.mkdirSync(rootDir, { recursive: true })
     Object.keys(fileList).forEach(fileName => {
       fs.writeFile(path.join(rootDir, fileName), fileList[fileName], (err, data) => {
         if (err) {throw err}
