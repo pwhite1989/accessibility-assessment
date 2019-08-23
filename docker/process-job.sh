@@ -9,7 +9,8 @@
 docker run --cpus 3  \
     -v $(pwd)/files/entry_point.sh:/opt/scripts/entry_point.sh \
     -v $(pwd)/files/assessAllPages.sh:/home/seluser/test-suites/assessAllPages.sh \
-    -v $(pwd)/files/a11y-report-parser:/home/seluser/a11y-report-parser \
+    -v $(pwd)/../a11y-report-parser:/home/seluser/a11y-report-parser \
+    -v $(pwd)/files/load-alert-data.sh:/home/seluser/load-alert-data.sh \
     -e TEST_SUITE_NAME=${1} \
     -e JENKINS_USERNAME=${JENKINS_USERNAME} \
     -e JENKINS_API_KEY=${JENKINS_API_KEY} \
@@ -27,3 +28,5 @@ docker run --cpus 3  \
 #    -e JENKINS_BASE_URI= \
 #    -e JENKINS_TEST_FOLDER= \
 #    accessibility-assessment:1.0.0
+
+#docker run -v $(pwd)/files/entry_point.sh:/opt/scripts/entry_point.sh -v $(pwd)/files/load-alert-data.sh:/home/seluser/load-alert-data.sh -v $(pwd)/../a11y-report-parser:/home/seluser/a11y-report-parser -e TEST_SUITE_NAME=${1} -e JENKINS_USERNAME=${JENKINS_USERNAME} -e JENKINS_API_KEY=${JENKINS_API_KEY} accessibility-assessment:1.0.0

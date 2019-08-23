@@ -39,7 +39,7 @@ object ReportParser {
 
         //The earliest report's timestamp, stored as the report directory name, is used as the value of 'TestRun' Json field in the output
         val earliestTimeStamp: Long = reportDirectoriesPath.map(_.split("/").last.toLong).sortWith(_ < _).head
-        val testRunTimeStamp: String = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").format(earliestTimeStamp)
+        val testRunTimeStamp: String = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(earliestTimeStamp)
 
         reportDirectoriesPath.foreach {
           reportDirectoryPath =>
