@@ -11,7 +11,6 @@ rm -f ../a11y-report-parser/bulk-upload-*
 docker run --cpus 3  \
     -v $(pwd)/files/entry_point.sh:/opt/scripts/entry_point.sh \
     -v $(pwd)/files/assessAllPages.sh:/home/seluser/test-suites/assessAllPages.sh \
-    -v $(pwd)/../a11y-report-parser:/home/seluser/a11y-report-parser \
     -v $(pwd)/files/load-alert-data.sh:/home/seluser/load-alert-data.sh \
     -e TEST_SUITE_NAME=${1} \
     -e JENKINS_USERNAME=${JENKINS_USERNAME} \
