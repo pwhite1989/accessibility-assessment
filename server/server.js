@@ -22,7 +22,7 @@ app.post('/page-data', (req, res) => {
   //   - it hasn't already been captured
   //   - the page is not served from a stub
   //   - the page is not test only
-  if(!capturedUrls.includes(body.pageURL) && !stubRegEx.test(body.pageURL) && !testOnlyRegEx.test(pageURL)) {
+  if(!capturedUrls.includes(body.pageURL) && !stubRegEx.test(body.pageURL) && !testOnlyRegEx.test(body.pageURL)) {
     capturedUrls.push(body.pageURL)
     const fileList = Object.assign({}, body.files, {'index.html': '<!DOCTYPE html>\n' + body.pageHTML}, {'data': body.pageURL})
     fs.mkdirSync(rootDir, { recursive: true })
