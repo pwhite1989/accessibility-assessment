@@ -3,7 +3,7 @@ FROM selenium/node-chrome:3.141.59-titanium
 ENV ELS_HOST http://host.docker.internal:9200
 ENV ELS_INDEX accessibility
 ENV ELS_BULK_UPLOAD_API ${ELS_HOST}/${ELS_INDEX}/violations/_bulk?pretty
-ENV TEST_SUITE_NAME test-suite
+ENV TEST_SUITE_NAME ""
 ENV JENKINS_BASE_URI https://build.tax.service.gov.uk
 ENV JENKINS_TEST_FOLDER job/PlatOps/job/Testing/job
 ENV JENKINS_USERNAME jenkins.user

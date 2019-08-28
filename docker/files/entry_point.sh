@@ -10,11 +10,10 @@ curl -L -o ${TEST_SUITE_NAME}.zip --user ${JENKINS_USERNAME}:${JENKINS_API_KEY} 
 # TODO:  We may want to update Jenkins and the assessAllPages.sh script rather than have this here...
 unzip -q ${TEST_SUITE_NAME}.zip -d test-suites/${TEST_SUITE_NAME}
 cd test-suites/${TEST_SUITE_NAME}
-cp server/*.log .
 cp -r server/output output
 rm -rf server/
 
-# TODO: Refactor assessAllPages.sh to run from against a given directory (first param...)
+# TODO: Refactor assessAllPages.sh to run against a given directory (first param...)
 cd ${HOME}/test-suites
 source assessAllPages.sh ${TEST_SUITE_NAME}
 
