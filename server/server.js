@@ -7,7 +7,9 @@ const port = 6001
 
 app.use(express.json({limit: '500mb',}));
 var capturedUrls = [];
-var excludeUrls = ["http://localhost:9949/auth-login-stub/gg-sign-in"]
+var excludedUrls = [];
+var testOnlyRegEx = RegExp('test\-only');
+var stubRegEx = RegExp('http:\/\/localhost:[0-9]{4}\/([a-z/-]+\-stub)');
 
 app.post('/page-data', (req, res) => {
   const body = req.body;
@@ -16,7 +18,11 @@ app.post('/page-data', (req, res) => {
   logData.pageHTML = logData.pageHTML.substr(0, 100) + '...'
   logData.files = Object.keys(logData.files)
 
-  if(!capturedUrls.includes(body.pageURL) && !excludeUrls.includes(body.pageURL)) {
+  //Capture the page for assessment if:
+  //   - it hasn't already been captured
+  //   - the page is not served from a stub
+  //   - the page is not test only
+  if(!capturedUrls.includes(body.pageURL) && !stubRegEx.test(body.pageURL) && !testOnlyRegEx.test(pageURL)) {
     capturedUrls.push(body.pageURL)
     const fileList = Object.assign({}, body.files, {'index.html': '<!DOCTYPE html>\n' + body.pageHTML}, {'data': body.pageURL})
     fs.mkdirSync(rootDir, { recursive: true })
@@ -26,6 +32,8 @@ app.post('/page-data', (req, res) => {
         console.log('saved file', fileName, body.pageHTML.substr(0, 20) + '...')
       })
     })
+  } else {
+    excludedUrls.push(body.pageURL)
   }
   console.log(logData)
 
@@ -34,6 +42,10 @@ app.post('/page-data', (req, res) => {
 
 app.get('/urls', (req, res) => {
   res.status(200).send(capturedUrls)
+})
+
+app.get('/excluded-urls', (req, res) => {
+  res.status(200).send(excludedUrls)
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
