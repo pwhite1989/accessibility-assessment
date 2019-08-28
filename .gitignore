@@ -17,7 +17,7 @@ dist
 /RUNNING_PID
 /.settings
 *.iws
-node_modules/
+
 npm-debug.log
 yarn-debug.log
 yarn-error.log
@@ -25,7 +25,7 @@ yarn-error.log
 #project specific
 server/node_modules
 server/output/*
-!server/output/.gitkeep
+server/package-lock.json
+node_modules/
 apps/esdata/*
-report-*
 a11y-report-parser/bulk-upload-*
