@@ -24,31 +24,21 @@ WORKDIR ${HOME}
 COPY --chown=seluser:seluser files/entry_point.sh /opt/scripts/entry_point.sh
 COPY --chown=seluser:seluser files/pa11y-config.json ${HOME}/pa11y-config.json
 COPY --chown=seluser:seluser files/assessAllPages.sh ${HOME}/test-suites/assessAllPages.sh
-COPY --chown=seluser:seluser files/a11y-report-parser/ ${HOME}/a11y-report-parser
+COPY --chown=seluser:seluser files/a11y-report-parser/a11y-report-parser-assembly-0.1.jar ${HOME}/a11y-report-parser/a11y-report-parser-assembly-0.1.jar
 COPY --chown=seluser:seluser files/load-alert-data.sh ${HOME}/load-alert-data.sh
 
 RUN sudo chmod 755 /opt/scripts/entry_point.sh \
       && sudo chmod 755 ${HOME}/test-suites/assessAllPages.sh \
       && sudo chmod 755 ${HOME}/load-alert-data.sh \
       && sudo chmod 755 ${HOME}/pa11y-config.json \
-      && sudo chmod -R 755 ${HOME}/a11y-report-parser \
       && sudo mkdir $NVM_DIR \
       && sudo chown seluser:seluser $NVM_DIR \
       && sudo echo -e '#!/bin/bash\njava -jar ${HOME}/.nvm/versions/node/v${NODE_VERSION}/lib/node_modules/vnu-jar/build/dist/vnu.jar "$@"' > /usr/bin/vnu \
       && chmod +x /usr/bin/vnu
 
-RUN wget -q www.scala-lang.org/files/archive/scala-${SCALA_VERSION}.deb \
-      && sudo dpkg -i scala-${SCALA_VERSION}.deb \
-      && echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list \
-      && sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 \
-      && sudo apt-get update \
-      && sudo apt-get -y install sbt
-
 USER seluser
 
-RUN cd ~/a11y-report-parser \
-      && sbt compile \
-      && cd ${HOME} \
+RUN   cd ${HOME} \
       && echo "${NODE_VERSION}" > .nvmrc \
       && mv .nvmrc .nvmrc.bk \
       && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash \

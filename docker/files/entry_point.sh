@@ -19,7 +19,7 @@ source assessAllPages.sh ${TEST_SUITE_NAME}
 
 # Run the report parser
 cd ~/a11y-report-parser
-sbt -Dtest.suites.location="${HOME}/test-suites" "run-main uk.gov.hmrc.a11y.ReportParser"
+java -Dtest.suites.location="${HOME}/test-suites" -jar a11y-report-parser-assembly-0.1.jar
 
 # Find the bulk upload file and load it to the given ELS instance
 cd ~

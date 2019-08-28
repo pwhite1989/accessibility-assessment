@@ -28,5 +28,4 @@ server/output/*
 !server/output/.gitkeep
 apps/esdata/*
 report-*
-docker/files/a11y-report-parser
 a11y-report-parser/bulk-upload-*
