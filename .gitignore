@@ -1,4 +1,3 @@
-
 logs
 project/project
 project/target
@@ -17,15 +16,4 @@ dist
 /RUNNING_PID
 /.settings
 *.iws
-
-npm-debug.log
-yarn-debug.log
-yarn-error.log
-
-#project specific
-server/node_modules
-server/output/*
-server/package-lock.json
-node_modules/
 apps/esdata/*
-a11y-report-parser/bulk-upload-*
