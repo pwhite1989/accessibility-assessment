@@ -11,7 +11,7 @@ cd ${HOME}/test-suites
 source assessAllPages.sh ${TEST_SUITE_NAME}
 
 # Run the report parser
-java -Dtest.suites.location="${HOME}/test-suites" -jar a11y-report-parser-assembly-0.1.jar
+java -Dtest.suites.location="${HOME}/test-suites" -jar accessibility-assessment-report-parser.jar
 
 # Find the bulk upload file and load it to the given ELS instance
 cd ~
