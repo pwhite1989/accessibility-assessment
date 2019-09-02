@@ -1,5 +1,5 @@
 # Accessibility Assessment Image
-This project contains the Dockerfile and dependencies for the access
+This project contains the Dockerfile and images assets required to create the accessibility-assessment image that is used in CI for the assessment of captured pages using axe, pa11y and vnu.  The violations found during the assessment are pushed to ELK.
 
 ## Running the image locally
 You will need to install [docker](https://docs.docker.com/install) to proceed with this guide.
