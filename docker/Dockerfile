@@ -24,7 +24,7 @@ WORKDIR ${HOME}
 COPY --chown=seluser:seluser files/entry_point.sh /opt/scripts/entry_point.sh
 COPY --chown=seluser:seluser files/pa11y-config.json ${HOME}/pa11y-config.json
 COPY --chown=seluser:seluser files/assessAllPages.sh ${HOME}/test-suites/assessAllPages.sh
-COPY --chown=seluser:seluser files/a11y-report-parser/a11y-report-parser-assembly-0.1.jar ${HOME}/a11y-report-parser/a11y-report-parser-assembly-0.1.jar
+COPY --chown=seluser:seluser files/accessibility-assessment-report-parser-0.1.jar ${HOME}/accessibility-assessment-report-parser-0.1
 COPY --chown=seluser:seluser files/load-alert-data.sh ${HOME}/load-alert-data.sh
 
 RUN sudo chmod 755 /opt/scripts/entry_point.sh \
