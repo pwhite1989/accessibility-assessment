@@ -50,7 +50,7 @@ function run_pa11y() {
 }
 
 declare -a pids
-read -a directories <<< $(find $1 -type d -mindepth 2 | tr '\n' ' ')
+read -a directories <<< $(find "test-suites/${1}/page-capture-service" -mindepth 2 -type d | tr '\n' ' ')
 
 run_axe "${directories[@]}" &
 pids[0]=$!
