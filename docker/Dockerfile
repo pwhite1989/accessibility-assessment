@@ -1,8 +1,5 @@
 FROM selenium/node-chrome:3.141.59-titanium
 
-ENV ELS_HOST http://host.docker.internal:9200
-ENV ELS_INDEX accessibility
-ENV ELS_BULK_UPLOAD_API ${ELS_HOST}/${ELS_INDEX}/violations/_bulk?pretty
 ENV TEST_SUITE_NAME ""
 ENV JENKINS_BASE_URI https://build.tax.service.gov.uk
 ENV JENKINS_TEST_FOLDER job/PlatOps/job/Testing/job
@@ -25,11 +22,9 @@ COPY --chown=seluser:seluser files/entry_point.sh /opt/scripts/entry_point.sh
 COPY --chown=seluser:seluser files/pa11y-config.json ${HOME}/pa11y-config.json
 COPY --chown=seluser:seluser files/assessAllPages.sh ${HOME}/test-suites/assessAllPages.sh
 COPY --chown=seluser:seluser files/accessibility-assessment-report-parser.jar ${HOME}/accessibility-assessment-report-parser.jar
-COPY --chown=seluser:seluser files/load-alert-data.sh ${HOME}/load-alert-data.sh
 
 RUN sudo chmod 755 /opt/scripts/entry_point.sh \
       && sudo chmod 755 ${HOME}/test-suites/assessAllPages.sh \
-      && sudo chmod 755 ${HOME}/load-alert-data.sh \
       && sudo chmod 755 ${HOME}/pa11y-config.json \
       && sudo mkdir ${HOME}/output \
       && sudo mkdir $NVM_DIR \

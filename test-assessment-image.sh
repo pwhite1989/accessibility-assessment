@@ -9,10 +9,10 @@ rm -f $(pwd)/files/output/*
 # assessAllPages script changes locally.
 ################################################################################
 docker run --cpus 3  \
-    -v $(pwd)/../docker/files/entry_point.sh:/opt/scripts/entry_point.sh \
-    -v $(pwd)/../docker/files/assessAllPages.sh:/home/seluser/test-suites/assessAllPages.sh \
-    -v $(pwd)/../docker/files/load-alert-data.sh:/home/seluser/load-alert-data.sh \
-    -v $(pwd)/files/output:/home/seluser/output \
+    -v $(pwd)/docker/files/entry_point.sh:/opt/scripts/entry_point.sh \
+    -v $(pwd)/docker/files/assessAllPages.sh:/home/seluser/test-suites/assessAllPages.sh \
+    -v $(pwd)/docker/files/load-alert-data.sh:/home/seluser/load-alert-data.sh \
+    -v $(pwd)/docker/files/output:/home/seluser/output \
     -e TEST_SUITE_NAME=${1} \
     -e JENKINS_USERNAME=${JENKINS_USERNAME} \
     -e JENKINS_API_KEY=${JENKINS_API_KEY} \
