@@ -2,25 +2,27 @@
 This project contains the Dockerfile and images assets required to create the accessibility-assessment image that is used in CI for the assessment of captured pages using axe, pa11y and vnu.  The violations found during the assessment are pushed to ELK.
 
 ## Running the image locally
-You will need to install [docker](https://docs.docker.com/install) to proceed with this guide.
+The following instructions are intended to give reviewers of the point in time accessibility audit early sight of the accessibility assessment findings.  This functionality will be made available in our CI in the coming weeks.
 
-The following instructions give reviewers of the point in time accessibility audit early sight of the accessibility assessment findings. Work is ongoing to implement this functionality in the build.
+We believe the automated assessment generates some value, however this value is hidden amongst a **LOT** of background noise.  We have not filtered any of the axe/pa11y/vnu violations at this time, so it wouldn't be unexpected for a 10 page assessment to generate ~150 Violations.  
+
+For this reason we're using the ELK stack to Visualise findings.
 
 ### Assessing a test suite
+You will need [docker](https://docs.docker.com/install) installed and an API token configured in our build jenkins to proceed with this guide.
 
 1. Build the accessibility-assessment image from the [docker](docker/) directory:
 ```bash
 docker build -t accessibility-assessment:1.0.0 .
 ```
-2. Start your local ELK stack from the [apps](apps/) directory:
+2. Ensure that you have ~6GB of memory allocated to your docker engine.
+3. Start your local ELK stack from the [apps](apps/) directory:
 ```bash
 docker-compose up -d
 ```
-> Go to http://localhost:5601 in your browser and wait for kibana to initialise
+> Go to http://localhost:5601 in your browser and wait for kibana to initialise:
 
-3. In Kibana, navigate to **Management -> Saved Ojbects** and click **Import**.  Load the [Index Saved Object](apps/kibana/kibana-index-so.json) and the [visualisations and dashboards](apps/kibana/management-kibana-so.json).  This file contains +700 saved objects so may take a few minutes to load.
-
-4. Ensure that you have the `JENKINS_USERNAME` and `JENKINS_API_KEY` environment variables set in your local development environment.  These values are used to retrieve a given test suite's pages from the jenkins api.
+4. Ensure that you have the `JENKINS_USERNAME` and `JENKINS_API_KEY` environment variables configured in your local development environment.  These credentials are used by the assessment container to retrieve pages via the jenkins api.
 
 5. Pick the test suite job name that you'd like to assess from jenkins(?) and execute:
 ```bash
@@ -29,8 +31,19 @@ docker-compose up -d
 
 **NOTE: Running time will depend on the number of unique pages that were captured during the UI test run.  As a rough guide, expect the assessment to take approximately 4 seconds per page.**
 
+### Visualising Violations in Kibana
+Visualisations are loaded manually using Kibana's Saved Object import UI.  If this is the first time you've run the `docker-compose` command in the previous section, then please follow the below instructions to generate the visualisations you'll need to review the results of the assessment:
+
+1. In Kibana, navigate to **Management -> Saved Ojbects** and click **Import**.  
+2. Load the [index saved object](apps/kibana/kibana-index-so.json).  Set the *time filter* field to *testRun* when prompted.
+3. Click **Import** again and load the [visualisations and dashboards saved objects](apps/kibana/management-kibana-so.json). Note that this file contains over 700 saved objects so may take a few minutes to load.
+
+You should now be able to search for Dashboards and Visualisations using the *test-suite-name* given to your UI test job in our build-jobs config.  
+
+**IMPORTANT: The time filter field we use in Kibana is currently "testRun", which is a timestamp that maps back to the execution of the UI tests that generated the Violations.  Make sure that you have your Time Range set correctly or the visualisations in your dashboards won't be populated.  We suggest setting it to "Last 7 days"**
+
 ### Stopping your local ELK stack
-Execute the following command:
+Execute the following command from the `apps/` directory:
 ```bash
 docker-compose kill
 ```
@@ -39,9 +52,8 @@ All of the data loaded into ElasticSearch during the assessment will be persiste
 ### Clearing down your local Data
 As mentioned in the previous section, all alerts and saved objects will be written to disk in `apps/esdata/`.
 
-If you wish to clear down Elastic Search, simply delete everything in this directory.  I.e. `rm -r apps/esdata/*`
+If you wish to clear down Elastic Search, simply delete everything in this directory.  I.e. `rm -r apps/esdata/*` Note that doing so will also delete the Index and other Visualisation saved objects imported in the **Visualising Violations in Kibana** section above.
 
 
 # License
-
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
