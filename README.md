@@ -40,7 +40,7 @@ Visualisations are loaded manually using Kibana's Saved Object import UI.  If th
 
 You should now be able to search for Dashboards and Visualisations using the *test-suite-name* given to your UI test job in our build-jobs config.  
 
-**IMPORTANT: The time filter field we use in Kibana is currently "testRun", which is a timestamp that maps back to the execution of the UI tests that generated the Violations.  Make sure that you have your Time Range set correctly or the visualisations in your dashboards won't be populated.  We suggest setting it to "Last 7 days"**
+**IMPORTANT: The time filter field we use in Kibana is currently "testRun", which is a timestamp that maps back to the execution of the UI tests that generated the pages used in the assessment.  Make sure that you have your Kibana "Time Range" set appropriately or the visualisations in your dashboards won't be visible.  We suggest setting it to "Last 7 days"**
 
 ### Stopping your local ELK stack
 Execute the following command from the `apps/` directory:
