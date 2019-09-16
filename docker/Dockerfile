@@ -18,6 +18,7 @@ USER root
 
 WORKDIR ${HOME}
 
+COPY --chown=seluser:seluser files/log_as_json ${HOME}/log_as_json
 COPY --chown=seluser:seluser files/entry_point.sh ${HOME}/entry_point.sh
 COPY --chown=seluser:seluser files/pa11y-config.json ${HOME}/pa11y-config.json
 COPY --chown=seluser:seluser files/assessAllPages.sh ${HOME}/assessAllPages.sh

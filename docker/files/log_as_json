@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+function log_message() {
+                log=$( jq -n \
+                  --arg level "$1" \
+                  --arg message "$2" \
+                  --arg type "accessibility_logs" \
+                  --arg app "accessibility_assessment" \
+                  --arg testSuite "$TEST_SUITE_NAME" \
+                  '{level: $level, message: $message, type: $type, app: $app, testSuite: $testSuite}' )
+                echo $log
+                echo $log >> output/accessibility-assessment.log
+}
