@@ -16,4 +16,8 @@ dist
 /RUNNING_PID
 /.settings
 *.iws
+
+# project specific
 apps/esdata/*
+docker/files/service/node_modules
+docker/files/service/package-lock.json
