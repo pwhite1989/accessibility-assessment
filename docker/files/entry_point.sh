@@ -2,7 +2,7 @@
 source log_as_json
 
 function set_status() {
-  curl -s -X POST http://localhost:16001/status/${1}
+  curl -s -X POST http://localhost:${SERVICE_PORT}/status/${1}
 }
 
 ( cd a11y-service && node server.js & )
@@ -10,7 +10,7 @@ sleep 1
 
 # Retrieve the zip and extract contents
 set_status PULLING_ZIP
-test_suite_url=$(curl -s --user ${JENKINS_USERNAME}:${JENKINS_API_KEY} ${JENKINS_BASE_URI}/${JENKINS_TEST_FOLDER}/a11y-test-${TEST_SUITE_NAME}/api/json | jq '.lastSuccessfulBuild | .url' | tr -d '"')
+test_suite_url=$(curl -s --user ${JENKINS_USERNAME}:${JENKINS_API_KEY} ${JENKINS_BASE_URI}/${JENKINS_TEST_FOLDER}/a11y-test-${TEST_SUITE_NAME}/api/json | jq '.lastBuild | .url' | tr -d '"')
 if [ -z "$test_suite_url" ]
 then
  log_message ERROR "Last Build Url not found at ${JENKINS_BASE_URI}/${JENKINS_TEST_FOLDER}/a11y-test-${TEST_SUITE_NAME}/api/json. Exiting process"
@@ -42,6 +42,7 @@ java -Dtest.suite.name="${TEST_SUITE_NAME}" \
      -Dtest.suite.artefact.location="$JENKINS_ARTIFACT_LOCATION/output" \
      -jar accessibility-assessment-report-parser.jar
 
+set_status EXPORT_LOGS
 sleep ${LOG_EXPORT_WAIT}
 set_status FINISHED
 sleep 10

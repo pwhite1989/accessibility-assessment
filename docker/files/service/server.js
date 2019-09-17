@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 16001
+const port = process.env.SERVICE_PORT
 
 var status='NOT-SET'
 
