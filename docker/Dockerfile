@@ -2,7 +2,7 @@ FROM selenium/node-chrome:3.141.59-titanium
 
 ENV TEST_SUITE_NAME ""
 ENV JENKINS_BASE_URI https://build.tax.service.gov.uk
-ENV JENKINS_TEST_FOLDER job/PlatOps/job/Testing/job
+ENV JENKINS_TEST_FOLDER job/Platform%20Testing/job/Accessibility/job
 ENV JENKINS_USERNAME jenkins.user
 ENV JENKINS_API_KEY 1234abcd
 ENV SERVICE_PORT 16001
