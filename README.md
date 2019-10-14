@@ -26,7 +26,7 @@ docker-compose up -d
 
 5. Pick the test suite job name that you'd like to assess from jenkins(?) and execute:
 ```bash
-./assess-test-suite.sh your-ui-test-job-name
+./test-assessment-image.sh your-ui-test-job-name
 ```
 
 **NOTE: Running time will depend on the number of unique pages that were captured during the UI test run.  As a rough guide, expect the assessment to take approximately 4 seconds per page.**
