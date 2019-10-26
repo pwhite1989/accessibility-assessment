@@ -17,6 +17,8 @@ docker run --cpus 3  \
     -e JENKINS_API_KEY=${JENKINS_API_KEY} \
     -p 6001:16001 \
     accessibility-assessment:1.0.0
+    #artefacts.tax.service.gov.uk/accessibility-assessment:0.5.0
+
 
 #-v $(pwd)/docker/files/accessibility-assessment-report-parser.jar:/home/seluser/accessibility-assessment-report-parser.jar \
 #-v $(pwd)/docker/files/entry_point.sh:/home/seluser/entry_point.sh \
