@@ -37,7 +37,7 @@ log_message INFO "Finished assesing all pages with Axe, A11y and VNU for $TEST_S
 
 # Run the report parser
 set_status PARSING_REPORTS
-PARSER_RESULT="$(java -Dtest.suite.name="${TEST_SUITE_NAME}" \
+PARSER_OUTPUT="$(java -Dtest.suite.name="${TEST_SUITE_NAME}" \
      -Dtest.suite.file.location="${HOME}/test-suites/${TEST_SUITE_NAME}/page-capture-service/output" \
      -Dtest.suite.artefact.location="$JENKINS_ARTIFACT_LOCATION/output" \
      -Dconfig.file="${HOME}/test-suites/${TEST_SUITE_NAME}/page-capture-service/global-filters.conf" \
@@ -47,7 +47,7 @@ if [ $? -eq 0 ]
 then
   log_message INFO "Report parser completed with exit code 0."
 else
-  EXCEPTION=$(echo "$PARSER_RESULT" | grep -o 'Exception.*$')
+  EXCEPTION=$(echo "$PARSER_OUTPUT" | grep -o 'Exception.*$')
   log_message ERROR "Report parser failed with the message: $EXCEPTION"
 fi
 
