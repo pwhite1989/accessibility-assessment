@@ -16,6 +16,7 @@ dist
 /RUNNING_PID
 /.settings
 *.iws
+**/.DS_Store
 
 # project specific
 apps/esdata/*

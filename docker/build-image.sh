@@ -1,2 +1,3 @@
 #!/bin/bash
-docker build -t accessibility-assessment:1.0.0 .
+docker rmi accessibility-assessment:SNAPSHOT
+docker build -t accessibility-assessment:SNAPSHOT .
