@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Set JENKINS_USERNAME and JENKINS_API_KEY as local environment variables.
+# Be sure to export valid build.tax.service.gov.uk API credentials
+# (JENKINS_USERNAME and JENKINS_API_KEY) in your local environment.
 
-rm -f $(pwd)/docker/files/output/*
+rm -rf $(pwd)/docker/files/output/*
 docker rm a11y
 
 ################################################################################
@@ -16,9 +17,8 @@ docker run --cpus 3  \
     -e JENKINS_USERNAME=${JENKINS_USERNAME} \
     -e JENKINS_API_KEY=${JENKINS_API_KEY} \
     -p 6001:16001 \
-    accessibility-assessment:1.0.0
+    accessibility-assessment:SNAPSHOT
     #artefacts.tax.service.gov.uk/accessibility-assessment:0.5.0
-
 
 #-v $(pwd)/docker/files/accessibility-assessment-report-parser.jar:/home/seluser/accessibility-assessment-report-parser.jar \
 #-v $(pwd)/docker/files/entry_point.sh:/home/seluser/entry_point.sh \

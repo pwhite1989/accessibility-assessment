@@ -34,7 +34,7 @@ function run_axe() {
   for axe_dir in "${axe_dirs[@]}"
   do
     log_message INFO "axe: assessing file://${working_dir}/${axe_dir}/index.html"
-    commandString="axe \"file://${working_dir}/${axe_dir}/index.html\" --no-reporter --save axe-report.json --dir $axe_dir >/dev/null"
+    commandString="axe \"file://${working_dir}/${axe_dir}/index.html\" --no-reporter --include \"main\" --save axe-report.json --dir $axe_dir >/dev/null"
     runCommand "${commandString}" "$axe_dir/axe-report.json"
   done
   log_message INFO "Axe assesing all pages completed"
@@ -58,7 +58,7 @@ function run_pa11y() {
   for pa11y_dir in "${pa11y_dirs[@]}"
   do
     log_message INFO "Pa11y: assessing file://${working_dir}/${pa11y_dir}/index.html"
-    commandString="pa11y -c ~/pa11y-config.json --reporter json --include-warnings \"$working_dir/$pa11y_dir/index.html\" | jq . &> $pa11y_dir/pa11y-report.json"
+    commandString="pa11y -c ~/pa11y-config.json --root-element \"main\" --reporter json --include-warnings \"$working_dir/$pa11y_dir/index.html\" | jq . &> $pa11y_dir/pa11y-report.json"
     runCommand "$commandString" "$pa11y_dir/pa11y-report.json"
   done
   log_message INFO "Pa11y assesing all pages completed"
