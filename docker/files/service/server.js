@@ -1,16 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
-const multer = require('multer');
+const multer = require('multer')
+const config = require('./config')
 const app = express()
-const port = process.env.SERVICE_PORT
-const test_suite_name = "undefined"
-const uploadConfigToDir = path.join(process.env.HOME)
-const outputDir = path.join(process.env.HOME,  'output')
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, uploadConfigToDir)
+    cb(null, config.globalFilterConfigLocation)
   },
   filename: function (req, file, cb) {
     cb(null, file.fieldname)
@@ -34,20 +31,20 @@ app.post('/status/:status', (req, res) => {
 app.post('/upload', upload.single('global-filters.conf'), (req, res, next) => {
   const file = req.file
   if (!file) {
-    const error = new Error('Please upload a file')
+    const error = new Error('Please provide a file')
     error.httpStatusCode = 400
     return next(error)
   }
-  logger("INFO",`Setting setting global configuration`)
+  logger("INFO",`Global configuration uploaded`)
   res.status(200).send()
 })
 
-app.listen(port, () => logger("INFO",`Accessibility assessment service running on port ${port}`))
+app.listen(config.port, () => logger("INFO",`Accessibility assessment service running on port ${config.port}`))
 
 function logger(level, message) {
-  const formatted_message = `{"level": "${level}", "message": "${message}", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "${test_suite_name}"}\n`
+  const formatted_message = `{"level": "${level}", "message": "${message}", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}\n`
   console.log(formatted_message)
-  fs.appendFile(path.join(outputDir, "accessibility-assessment-service.log"), formatted_message, (err, data) => {
+  fs.appendFile(path.join(config.outputDir, "accessibility-assessment-service.log"), formatted_message, (err, data) => {
     if (err) {
       throw err
     }

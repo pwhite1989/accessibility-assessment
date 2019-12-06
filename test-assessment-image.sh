@@ -13,7 +13,7 @@ docker rm a11y
 docker run --cpus 3  \
     --name a11y \
     -v $(pwd)/docker/files/output:/home/seluser/output \
-    -e JOB_URL=${1} \
+    -e BUILD_URL=${1} \
     -e JENKINS_USERNAME=${JENKINS_USERNAME} \
     -e JENKINS_API_KEY=${JENKINS_API_KEY} \
     -p 6001:16001 \
