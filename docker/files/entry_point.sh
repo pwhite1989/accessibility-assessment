@@ -11,7 +11,7 @@ sleep 5
 
 # Retrieve the zip and extract contents
 set_status PULLING_ZIP
-test_suite_name=$(echo ${BUILD_URL%/} | rev | cut -d'/' -f 3 | rev | sed 's/a11y-test-//g')
+test_suite_name=$(echo ${BUILD_URL} | rev | cut -d'/' -f 3 | rev | sed 's/a11y-test-//g')
 artefact_location=${BUILD_URL}artifact/pages
 artefact_download_status=$(curl -L -s -o pages.zip --user ${JENKINS_USERNAME}:${JENKINS_API_KEY}  --write-out "%{http_code}" "${artefact_location}"/*zip*/pages.zip)
 
@@ -30,7 +30,7 @@ PARSER_OUTPUT="$(java -Dtest.suite.name="${test_suite_name}" \
      -Dtest.suite.file.location="${HOME}/pages" \
      -Dtest.suite.artefact.location="${artefact_location}" \
      -Dconfig.file="${HOME}/global-filters.conf" \
-     -jar accessibility-assessment-report-parser.jar 2>&1)"
+     -jar page-accessibility-check.jar 2>&1)"
 
 if [ $? -eq 0 ]
 then

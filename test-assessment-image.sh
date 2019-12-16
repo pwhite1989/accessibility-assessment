@@ -20,7 +20,7 @@ docker run --cpus 3  \
     accessibility-assessment:SNAPSHOT
     #artefacts.tax.service.gov.uk/accessibility-assessment:0.5.0  # Current CI build image
 
-#-v $(pwd)/docker/files/accessibility-assessment-report-parser.jar:/home/seluser/accessibility-assessment-report-parser.jar \
+#-v $(pwd)/docker/files/page-accessibility-check.jar:/home/seluser/page-accessibility-check.jar \
 #-v $(pwd)/docker/files/entry_point.sh:/home/seluser/entry_point.sh \
 #-v $(pwd)/docker/files/assessAllPages.sh:/home/seluser/assessAllPages.sh \
 #-v $(pwd)/docker/files/global-filters.conf:/home/seluser/global-filters.conf \
