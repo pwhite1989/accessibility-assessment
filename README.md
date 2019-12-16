@@ -13,7 +13,7 @@ You will need [docker](https://docs.docker.com/install) installed and an API tok
 
 1. Build the accessibility-assessment image from the [docker](docker/) directory:
 ```bash
-docker build -t accessibility-assessment:1.0.0 .
+./build-image.sh
 ```
 2. Ensure that you have ~6GB of memory allocated to your docker engine.
 3. Start your local ELK stack from the [apps](apps/) directory:
@@ -24,9 +24,11 @@ docker-compose up -d
 
 4. Ensure that you have the `JENKINS_USERNAME` and `JENKINS_API_KEY` environment variables configured in your local development environment.  These credentials are used by the assessment container to retrieve pages via the jenkins api.
 
-5. Pick the test suite job name that you'd like to assess from jenkins(?) and execute:
+5. Provide the test suite's Jenkins build url that you'd like to assess. It is required that the pages to be assessed
+are already captured and archived under `<build_url>/artifact/pages`. Jenkins Build URL can be found in: `<jenkins-job-url>/<build-number>/injectedEnvVars/`
+ 
 ```bash
-./assess-test-suite.sh your-ui-test-job-name
+./test-assessment-image.sh <build_url>
 ```
 
 **NOTE: Running time will depend on the number of unique pages that were captured during the UI test run.  As a rough guide, expect the assessment to take approximately 4 seconds per page.**
@@ -40,7 +42,7 @@ Visualisations are loaded manually using Kibana's Saved Object import UI.  If th
 
 You should now be able to search for Dashboards and Visualisations using the *test-suite-name* given to your UI test job in our build-jobs config.  
 
-**IMPORTANT: The time filter field we use in Kibana is currently "testRun", which is a timestamp that maps back to the execution of the UI tests that generated the pages used in the assessment.  Make sure that you have your Kibana "Time Range" set appropriately or the visualisations in your dashboards won't be visible.  We suggest setting it to "Last 7 days"**
+**IMPORTANT: The time filter field we use in Kibana is currently "@timestamp", which is a timestamp that maps back to the execution of the UI tests that generated the pages used in the assessment.  Make sure that you have your Kibana "Time Range" set appropriately or the visualisations in your dashboards won't be visible.  We suggest setting it to "Last 7 days"**
 
 ### Stopping your local ELK stack
 Execute the following command from the `apps/` directory:
