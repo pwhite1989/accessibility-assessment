@@ -1,14 +1,21 @@
 const fs = require('fs')
 const path = require('path')
-
 const express = require('express')
+const multer = require('multer')
+const config = require('./config')
 const app = express()
-const port = process.env.SERVICE_PORT
-const test_suite_name = process.env.TEST_SUITE_NAME
 
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, config.globalFilterConfigLocation)
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname)
+  }
+})
+
+var upload = multer({ storage: storage })
 var status='NOT-SET'
-
-const rootDir = path.join(process.env.HOME,  'output')
 
 app.get('/status', (req, res) => {
   logger("INFO",`Returning Accessibility assessment service status:${status}`)
@@ -16,17 +23,28 @@ app.get('/status', (req, res) => {
 })
 
 app.post('/status/:status', (req, res) => {
-  logger("INFO",`Setting accessibility assessment service status:${req.params.status}`)
+  logger("INFO",`Setting accessibility assessment service status from ${status} to ${req.params.status}`)
   status=req.params.status
   res.status(204).send()
 })
 
-app.listen(port, () => logger("INFO",`Accessibility assessment service running on port ${port}`))
+app.post('/upload', upload.single('global-filters.conf'), (req, res, next) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please provide a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+  logger("INFO",`Global configuration uploaded`)
+  res.status(200).send()
+})
+
+app.listen(config.port, () => logger("INFO",`Accessibility assessment service running on port ${config.port}`))
 
 function logger(level, message) {
-  const formatted_message = `{"level": "${level}", "message": "${message}", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "${test_suite_name}"}\n`
+  const formatted_message = `{"level": "${level}", "message": "${message}", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}\n`
   console.log(formatted_message)
-  fs.appendFile(path.join(rootDir, "accessibility-assessment-service.log"), formatted_message, (err, data) => {
+  fs.appendFile(path.join(config.outputDir, "accessibility-assessment-service.log"), formatted_message, (err, data) => {
     if (err) {
       throw err
     }

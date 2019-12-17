@@ -5,7 +5,7 @@ function log_message() {
                   --arg message "$2" \
                   --arg type "accessibility_logs" \
                   --arg app "accessibility_assessment" \
-                  --arg testSuite "$TEST_SUITE_NAME" \
+                  --arg testSuite "$3" \
                   '{level: $level, message: $message, type: $type, app: $app, testSuite: $testSuite}' )
                 echo $log
                 echo $log >> output/accessibility-assessment.log
