@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 source log_as_json
 
+export APP_PORT=16001
+
 function set_status() {
-  curl -s -X POST http://localhost:${SERVICE_PORT}/status/${1}
+  curl -s -X POST http://localhost:${APP_PORT}/status/${1}
 }
 
 ( export NODE_ENV=jenkins && cd a11y-service && node server.js & )
