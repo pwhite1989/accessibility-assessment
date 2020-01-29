@@ -2,7 +2,7 @@
 This project contains the Dockerfile and images assets required to create the accessibility-assessment image that is used in CI for the assessment of captured pages using [axe](https://www.deque.com/axe/) and [Nu HTML Checker](https://validator.github.io/validator/).
 
 ## Image Composition
-Due to the experimentatl nature of the accessibility audit, the image functionality has been implemented in various places:
+Due to the experimental nature of the accessibility audit, the image functionality has been implemented in various places:
 - `entry_point.sh` script.  This script currently uploads an archived bundle of HTML pages/assets from Jenkins and explodes the bundle on the file system of the container. The script then runs the page-accessibility-check  app.   
 - [page-accessibility-check.jar](https://github.com/hmrc/page-accessibility-check): a scala application that orchestrates page assessments, parses reports and normalises the output for ingestion in Kibana. 
 - [accessibility-assessment-service](docker/files/service/server.js): a simple, single file node express service which exposes endpoints to the jenkins job for retrieving the container status, uploading filter configuration and retrieving a basic HTML report. 
