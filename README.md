@@ -1,44 +1,61 @@
 # Accessibility Assessment Image
-This project contains the Dockerfile and images assets required to create the accessibility-assessment image that is used in CI for the assessment of captured pages using axe, pa11y and vnu.  The violations found during the assessment are pushed to ELK.
+This project contains the Dockerfile and images assets required to create the accessibility-assessment image that is used in CI for the assessment of captured pages using [axe](https://www.deque.com/axe/) and [Nu HTML Checker](https://validator.github.io/validator/).
 
-## Running the image locally
-The following instructions are intended to give reviewers of the point in time accessibility audit early sight of the accessibility assessment findings.  This functionality will be made available in our CI in the coming weeks.
+## Image Composition
+Due to the experimental nature of the accessibility audit, the image functionality has been implemented in various places:
+- `entry_point.sh` script.  This script currently uploads an archived bundle of HTML pages/assets from Jenkins and explodes the bundle on the file system of the container. The script then runs the page-accessibility-check  app.   
+- [page-accessibility-check.jar](https://github.com/hmrc/page-accessibility-check): a scala application that orchestrates page assessments, parses reports and normalises the output for ingestion in Kibana. 
+- [accessibility-assessment-service](docker/files/service/server.js): a simple, single file node express service which exposes endpoints to the jenkins job for retrieving the container status, uploading filter configuration and retrieving a basic HTML report. 
 
-We believe the automated assessment generates some value, however this value is hidden amongst a **LOT** of background noise.  We have not filtered any of the axe/pa11y/vnu violations at this time, so it wouldn't be unexpected for a 10 page assessment to generate ~150 Violations.  
+We intend future improvements to collapse the above parts into a single Scala service which will support capturing pages, conducting the assessment/validation and compiling a report alongside UI test job execution.  Note that the functionality for capturing pages currently resides in the [page-capture-service](https://github.com/hmrc/page-capture-service), which is a Node application that initialises prior to test execution on the Jenkins build slave.
 
-For this reason we're using the ELK stack to Visualise findings.
+## Building the image...
 
-### Assessing a test suite
-You will need [docker](https://docs.docker.com/install) installed and an API token configured in our build jenkins to proceed with this guide.
+### For use in CI
+The [Makefile](Makefile) at the root of this project is used by Jenkins to build and push new versions of this image to artefactory for use in CI.
 
-1. Build the accessibility-assessment image from the [docker](docker/) directory:
+### For use in your local development environment 
+If you have [docker](https://docs.docker.com/install) installed, you can build this image for use locally with the following commands:
 ```bash
+cd docker
 ./build-image.sh
 ```
-2. Ensure that you have ~6GB of memory allocated to your docker engine.
-3. Start your local ELK stack from the [apps](apps/) directory:
+
+This will push an image named **accessibility-assessment:SNAPSHOT** to you local docker repository.
+
+## Testing the image locally
+To test this image locally using pages captured by a UI test suite in Jenkins, you will need:
+- to have [docker](https://docs.docker.com/install) installed locally; and 
+- have an API token configured in our build jenkins
+
+
+### Running up a local ELK stack
+You will need to have ~6GB of memory allocated to your local docker engine to run the ELK stack.  You can configure this in **Docker -> Preferences**
+
+1. Start ELK with the docker compose script provided in the [apps](apps/) directory:
 ```bash
+cd apps/
 docker-compose up -d
 ```
-> Go to http://localhost:5601 in your browser and wait for kibana to initialise:
+2. Go to http://localhost:5601 in your browser and wait for Kibana to initialise:
 
-4. Ensure that you have the `JENKINS_USERNAME` and `JENKINS_API_KEY` environment variables configured in your local development environment.  These credentials are used by the assessment container to retrieve pages via the jenkins api.
+### Assess the pages captured by a jenkins build
 
-5. Provide the test suite's Jenkins build url that you'd like to assess. It is required that the pages to be assessed
-are already captured and archived under `<build_url>/artifact/pages`. Jenkins Build URL can be found in: `<jenkins-job-url>/<build-number>/injectedEnvVars/`
+
+1. Ensure that you have the `JENKINS_USERNAME` and `JENKINS_API_KEY` environment variables configured in your local development environment.  These credentials are used by the assessment container to retrieve pages via the jenkins api.
+
+2. Provide the complete **build URL** as an argument to the (test-assessment-image.sh script)[test-assessment-image.sh]. For example: 
  
 ```bash
-./test-assessment-image.sh <build_url>
+./test-assessment-image.sh https://build.tax.service.gov.uk/job/PlatOps/job/Examples/job/platops-example-a11y-test/2
 ```
 
-**NOTE: Running time will depend on the number of unique pages that were captured during the UI test run.  As a rough guide, expect the assessment to take approximately 4 seconds per page.**
-
 ### Visualising Violations in Kibana
-Visualisations are loaded manually using Kibana's Saved Object import UI.  If this is the first time you've run the `docker-compose` command in the previous section, then please follow the below instructions to generate the visualisations you'll need to review the results of the assessment:
+Visualisations for the local Kibana instance can be loaded manually using Kibana's Saved Object import UI.  If this is the first time you've run the `docker-compose` command in the previous section, then please follow the below instructions to generate the visualisations you'll need to review the results of the assessment:
 
 1. In Kibana, navigate to **Management -> Saved Ojbects** and click **Import**.  
 2. Load the [index saved object](apps/kibana/kibana-index-so.json).  Set the *time filter* field to *testRun* when prompted.
-3. Click **Import** again and load the [visualisations and dashboards saved objects](apps/kibana/management-kibana-so.json). Note that this file contains over 700 saved objects so may take a few minutes to load.
+3. Click **Import** again and load the [visualisations and dashboards saved objects](apps/kibana/management-kibana-so.json). 
 
 You should now be able to search for Dashboards and Visualisations using the *test-suite-name* given to your UI test job in our build-jobs config.  
 
@@ -57,6 +74,8 @@ As mentioned in the previous section, all alerts and saved objects will be writt
 
 If you wish to clear down Elastic Search, simply delete everything in this directory.  I.e. `rm -r apps/esdata/*` Note that doing so will also delete the Index and other Visualisation saved objects imported in the **Visualising Violations in Kibana** section above.
 
+## Accessibility Audit Data 
+To follow.  
 
 # License
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
