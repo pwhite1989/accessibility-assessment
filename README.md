@@ -7,7 +7,7 @@ Due to the experimental nature of the accessibility audit, the image functionali
 - [page-accessibility-check.jar](https://github.com/hmrc/page-accessibility-check): a scala application that orchestrates page assessments, parses reports and normalises the output for ingestion in Kibana. 
 - [accessibility-assessment-service](docker/files/service/server.js): a simple, single file node express service which exposes endpoints to the jenkins job for retrieving the container status, uploading filter configuration and retrieving a basic HTML report. 
 
-We intend future improvements to collapse the above parts into a single Scala service which will support capturing pages, conducting the assessment/validation and compiling a report alongside UI test job execution.  Note that the functionality for capturing pages currently resides in the (page-capture-service)[https://github.com/hmrc/page-capture-service], which is a Node application that initialises prior to test execution on the Jenkins build slave.
+We intend future improvements to collapse the above parts into a single Scala service which will support capturing pages, conducting the assessment/validation and compiling a report alongside UI test job execution.  Note that the functionality for capturing pages currently resides in the [page-capture-service](https://github.com/hmrc/page-capture-service), which is a Node application that initialises prior to test execution on the Jenkins build slave.
 
 ## Building the image...
 
