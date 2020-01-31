@@ -18,7 +18,9 @@ docker run --cpus 3  \
     -e JENKINS_API_KEY=${JENKINS_API_KEY} \
     -p 6001:16001 \
     accessibility-assessment:SNAPSHOT
-    #artefacts.tax.service.gov.uk/accessibility-assessment:0.5.0  # Current CI build image
+    #artefacts.tax.service.gov.uk/accessibility-assessment:0.9.0
+    #To run with the latest image used in ci, update the below version with version used in mdtp-build repo.
+    #artefacts.tax.service.gov.uk/accessibility-assessment:<mdtp-build-version>  # Current CI build image
 
 #-v $(pwd)/docker/files/page-accessibility-check.jar:/home/seluser/page-accessibility-check.jar \
 #-v $(pwd)/docker/files/entry_point.sh:/home/seluser/entry_point.sh \
