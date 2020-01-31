@@ -40,7 +40,8 @@ then
   log_message INFO "Report parser completed with exit code 0." $test_suite_name
 else
   EXCEPTION=$(echo "$PARSER_OUTPUT" | grep -o 'Exception.*$')
-  log_message ERROR "Report parser failed with the message: $EXCEPTION" $test_suite_name
+  log_message ERROR "Report parser failed. Below is the list of all exceptions thrown during run: $EXCEPTION" $test_suite_name
+  exit 1
 fi
 
 #Wait for logs to export via fluentbit
