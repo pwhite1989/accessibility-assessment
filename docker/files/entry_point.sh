@@ -9,7 +9,7 @@ function set_status() {
 
 ( export NODE_ENV=jenkins && cd a11y-service && node server.js & )
 
-sleep 5
+sleep 10000
 
 # Retrieve the zip and extract contents
 set_status PULLING_ZIP

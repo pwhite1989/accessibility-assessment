@@ -20,9 +20,11 @@ COPY --chown=seluser:seluser files/log_as_json ${HOME}/log_as_json
 COPY --chown=seluser:seluser files/entry_point.sh ${HOME}/entry_point.sh
 COPY --chown=seluser:seluser files/page-accessibility-check.jar ${HOME}/page-accessibility-check.jar
 COPY --chown=seluser:seluser files/service ${HOME}/a11y-service
+COPY --chown=seluser:seluser files/report ${HOME}/report
 
 RUN sudo chmod 755 ${HOME}/entry_point.sh \
       && sudo chmod 755 ${HOME}/a11y-service/server.js \
+      && sudo chmod 755 ${HOME}/report/prepare-report.js \
       && sudo mkdir ${HOME}/output \
       && sudo chmod 755 ${HOME}/output \
       && sudo chown -R seluser:seluser ${HOME}/output \
@@ -47,6 +49,8 @@ RUN   cd ${HOME} \
       && cd ${HOME} \
       && npm install vnu-jar@${NPM_VNU_VERSION} -g \
       && cd ${HOME}/a11y-service \
+      && npm install \
+      && cd ${HOME}/report \
       && npm install
 
 EXPOSE 16001

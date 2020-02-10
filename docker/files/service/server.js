@@ -39,6 +39,21 @@ app.post('/upload', upload.single('global-filters.conf'), (req, res, next) => {
   res.status(200).send()
 })
 
+app.get('/report-new', (req, res) => {
+  const reportPath = path.join(config.outputDir, 'example-output.html')
+  let readStream = fs.createReadStream(reportPath);
+  readStream.pipe(res);
+
+  readStream.on('error', (err) => {
+    logger('ERROR', 'Error reading accessibility assessment report file. Failed with ' + err);
+    return res.sendStatus(500);
+  });
+
+  res.on('error', (err) => {
+    logger('ERROR', 'Error in write stream. Writing accessibility assessment report file failed with ' + err);
+  });
+});
+
 app.get('/report', (req, res) => {
   const reportPath = path.join(config.outputDir, config.accessibility_assessment_report)
 

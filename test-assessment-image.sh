@@ -13,6 +13,7 @@ docker rm a11y
 docker run --cpus 3  \
     --name a11y \
     -v $(pwd)/docker/files/output:/home/seluser/output \
+    -v $(pwd)/docker/files/entry_point.sh:/home/seluser/entry_point.sh \
     -e BUILD_URL=${1} \
     -e JENKINS_USERNAME=${JENKINS_USERNAME} \
     -e JENKINS_API_KEY=${JENKINS_API_KEY} \
