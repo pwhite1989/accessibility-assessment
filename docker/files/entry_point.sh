@@ -9,8 +9,6 @@ function set_status() {
 
 ( export NODE_ENV=jenkins && cd a11y-service && node server.js & )
 
-sleep 10000
-
 # Retrieve the zip and extract contents
 set_status PULLING_ZIP
 test_suite_name=$(echo ${BUILD_URL} | rev | cut -d'/' -f 3 | rev | sed 's/a11y-test-//g')
@@ -34,6 +32,9 @@ PARSER_OUTPUT="$(java -Dtest.suite.name="${test_suite_name}" \
      -Dconfig.file="${HOME}/global-filters.conf" \
      -Dtest.suite.build.url="${BUILD_URL}" \
      -jar page-accessibility-check.jar 2>&1)"
+
+
+sleep 1000
 
 if [ $? -eq 0 ]
 then
