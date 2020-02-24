@@ -1,6 +1,10 @@
 #!/bin/bash
 
-accessibility_report_dir=$(pwd)/../../accessibility-report/
+accessibility_report_dir=${WORKSPACE}/accessibility-report/
+page_accessibility_check_dir=${WORKSPACE}/page-accessibility-check/
+
+rm files/page-accessibility-check.jar || true
+cp ${page_accessibility_check_dir}target/scala-2.11/page-accessibility-check.jar files/page-accessibility-check.jar
 
 rm -rf files/report
 mkdir files/report

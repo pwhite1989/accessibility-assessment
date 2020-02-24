@@ -74,10 +74,6 @@ preocessInputData
     .then(prepareModel)
     .then(includeSass)
     .then(includeJs)
-    .then(x => {
-        console.log(`<!-- \n\n ${JSON.stringify(x, null, 2)} \n\n -->`)
-        return x
-    })
     .then(model => pug.renderFile('template.pug', model))
     .then(console.log)
     .catch(e => {
