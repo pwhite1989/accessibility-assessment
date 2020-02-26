@@ -1,6 +1,7 @@
 FROM selenium/node-chrome:3.141.59-titanium
 
 ENV BUILD_URL ""
+ENV APP_PORT 6010
 ENV JENKINS_USERNAME jenkins.user
 ENV JENKINS_API_KEY 1234abcd
 ENV LOG_EXPORT_WAIT 30
@@ -16,14 +17,17 @@ USER root
 
 WORKDIR ${HOME}
 
-COPY --chown=seluser:seluser files/log_as_json ${HOME}/log_as_json
-COPY --chown=seluser:seluser files/entry_point.sh ${HOME}/entry_point.sh
+COPY --chown=seluser:seluser files/generate_report.sh ${HOME}/generate_report.sh
+COPY --chown=seluser:seluser files/run_service.sh ${HOME}/run_service.sh
+COPY --chown=seluser:seluser files/run_assessment.sh ${HOME}/run_assessment.sh
 COPY --chown=seluser:seluser files/page-accessibility-check.jar ${HOME}/page-accessibility-check.jar
-COPY --chown=seluser:seluser files/service ${HOME}/a11y-service
+COPY --chown=seluser:seluser files/service ${HOME}/service
 COPY --chown=seluser:seluser files/report ${HOME}/report
 
-RUN sudo chmod 755 ${HOME}/entry_point.sh \
-      && sudo chmod 755 ${HOME}/a11y-service/server.js \
+RUN sudo chmod 777 ${HOME}/run_assessment.sh \
+      && sudo chmod 777 ${HOME}/generate_report.sh \
+      && sudo chmod 755 ${HOME}/run_service.sh \
+      && sudo chmod 755 ${HOME}/service/app.js \
       && sudo chmod 755 ${HOME}/report/prepare-report.js \
       && sudo mkdir ${HOME}/output \
       && sudo chmod 755 ${HOME}/output \
@@ -48,11 +52,11 @@ RUN   cd ${HOME} \
       && npm install chromedriver@${NPM_CHROME_DRIVER_VERSION} --save-dev \
       && cd ${HOME} \
       && npm install vnu-jar@${NPM_VNU_VERSION} -g \
-      && cd ${HOME}/a11y-service \
+      && cd ${HOME}/service \
       && npm install \
       && cd ${HOME}/report \
       && npm install
 
-EXPOSE 16001
+EXPOSE 6010
 
-CMD ["/bin/bash", "/home/seluser/entry_point.sh"]
+CMD ["/bin/bash", "/home/seluser/run_service.sh"]

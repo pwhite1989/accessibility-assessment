@@ -1,0 +1,12 @@
+{"level": "INFO", "message": "Accessibility assessment service running on port 6010", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "DEBUG", "message": "Removed pages directory", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "DEBUG", "message": "Failed to remove file with error:ENOENT: no such file or directory, unlink '/home/seluser/output/urls.log'", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "DEBUG", "message": "Failed to remove file with error:ENOENT: no such file or directory, unlink '/home/seluser/output/excluded-urls.log'", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "Returning Accessibility assessment service status:NOT_SET", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "Returning Accessibility assessment service status:NOT_SET", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "Setting accessibility assessment service status from NOT_SET to ASSESSING_PAGES", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "Setting accessibility assessment service status from ASSESSING_PAGES to ASSESSMENT_COMPLETE", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "Setting accessibility assessment service status from ASSESSMENT_COMPLETE to GENERATING_REPORT", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "Setting accessibility assessment service status from GENERATING_REPORT to REPORT_READY", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "3941 total bytes", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}
+{"level": "INFO", "message": "archiver has been finalized and the output file descriptor has closed.", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}

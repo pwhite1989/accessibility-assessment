@@ -1,0 +1,90 @@
+{
+  "testSuite" : "lost-credentials-a11y-test",
+  "buildNo" : 23,
+  "buildUrl" : "https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/",
+  "tools" : [ {
+    "name" : "Axe",
+    "tool" : "axe",
+    "toolType" : "accessibility",
+    "version" : "3.1.0",
+    "summary" : {
+      "pageCount" : 3,
+      "violationCount" : 0,
+      "errorCount" : 0,
+      "informationalCount" : 0
+    },
+    "paths" : [ ]
+  }, {
+    "name" : "VNU",
+    "tool" : "vnu",
+    "toolType" : "HTML Validator",
+    "version" : "19.6.7",
+    "summary" : {
+      "pageCount" : 3,
+      "violationCount" : 3,
+      "errorCount" : 0,
+      "informationalCount" : 3
+    },
+    "paths" : [ {
+      "path" : "/some/3",
+      "pageCount" : 1,
+      "pages" : [ {
+        "name" : "Captured Page: 1",
+        "url" : "https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000003/index.html",
+        "violationCount" : 1,
+        "violations" : [ {
+          "tool" : "vnu",
+          "testSuite" : "lost-credentials-a11y-test",
+          "path" : "/some/3",
+          "capturedPage" : "https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000003/index.html",
+          "code" : "UNDEFINED",
+          "severity" : "info",
+          "alertLevel" : "INFO",
+          "description" : "Consider adding a “lang” attribute to the “html” start tag to declare the language of this document.",
+          "snippet" : "TYPE html>\n<html><head>",
+          "helpUrl" : "UNDEFINED"
+        } ]
+      } ]
+    }, {
+      "path" : "/some/2",
+      "pageCount" : 1,
+      "pages" : [ {
+        "name" : "Captured Page: 1",
+        "url" : "https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000002/index.html",
+        "violationCount" : 1,
+        "violations" : [ {
+          "tool" : "vnu",
+          "testSuite" : "lost-credentials-a11y-test",
+          "path" : "/some/2",
+          "capturedPage" : "https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000002/index.html",
+          "code" : "UNDEFINED",
+          "severity" : "info",
+          "alertLevel" : "INFO",
+          "description" : "Consider adding a “lang” attribute to the “html” start tag to declare the language of this document.",
+          "snippet" : "TYPE html>\n<html><head>",
+          "helpUrl" : "UNDEFINED"
+        } ]
+      } ]
+    }, {
+      "path" : "/some/1",
+      "pageCount" : 1,
+      "pages" : [ {
+        "name" : "Captured Page: 1",
+        "url" : "https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000001/index.html",
+        "violationCount" : 1,
+        "violations" : [ {
+          "tool" : "vnu",
+          "testSuite" : "lost-credentials-a11y-test",
+          "path" : "/some/1",
+          "capturedPage" : "https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000001/index.html",
+          "code" : "UNDEFINED",
+          "severity" : "info",
+          "alertLevel" : "INFO",
+          "description" : "Consider adding a “lang” attribute to the “html” start tag to declare the language of this document.",
+          "snippet" : "TYPE html>\n<html><head>",
+          "helpUrl" : "UNDEFINED"
+        } ]
+      } ]
+    } ]
+  } ]
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>HMRC Accessibility report for lost-credentials-a11y-test</title><style>* {  box-sizing: border-box; }body {  font-family: sans-serif;  padding: 20px; }.summary {  background: #e3e3e3;  max-width: 800px;  border-bottom: 1px solid black; }  .summary dl {    margin: 0;    padding: 0; }    .summary dl:nth-child(even) dt, .summary dl:nth-child(even) dd {      background: #f3f3f3; }    .summary dl dt, .summary dl dd {      display: inline-block;      border: 1px solid black;      border-bottom: 0 none;      margin: 0;      padding: 0.3em; }    .summary dl dt {      width: 40%;      border-right: 0 none; }    .summary dl dd {      width: 60%; }.violations .code, .violations .alert, .violations .severity {  width: 5%; }.violations .path {  width: 12%; }.violations .snippet, .violations .info {  width: 22% pre;    width-width: auto;    width-max-width: 100%; }.violations .description {  width: 22%; }.js-enabled .hidden-waiting-for-tab-activation {  display: none; }.tabs ul {  display: block;  margin: 0;  padding: 0;  border-bottom: 1px solid black;  list-style: none; }  .tabs ul .tab {    list-style: none;    display: inline-block;    padding: 0;    margin: 0;    margin-right: 5px; }    .tabs ul .tab a:link, .tabs ul .tab a:visited, .tabs ul .tab a:hover, .tabs ul .tab a:active {      display: inline-block;      padding: 8px 15px;      color: black;      border: 2px solid black;      border-bottom: 0 none;      margin: 0;      text-decoration: none;      font-weight: bold; }    .tabs ul .tab.tab--active a:link, .tabs ul .tab.tab--active a:visited, .tabs ul .tab.tab--active a:hover, .tabs ul .tab.tab--active a:active {      background: #e3e3e3; }</style></head><body><h1>HMRC Accessibility report for lost-credentials-a11y-test</h1><article><h2>Summary<div class="summary"><dl><dt>Test Suite Name</dt><dd>lost-credentials-a11y-test</dd></dl><dl><dt>Build No</dt><dd><a href="https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/">23</a></dd></dl><dl><dt>Total Error Count</dt><dd>0</dd></dl><dl><dt>Axe Error Count</dt><dd>0</dd></dl><dl><dt>Axe Version</dt><dd>3.1.0</dd></dl><dl><dt>Axe Page Count</dt><dd>3</dd></dl><dl><dt>VNU Error Count</dt><dd>0</dd></dl><dl><dt>VNU Version</dt><dd>19.6.7</dd></dl><dl><dt>VNU Page Count</dt><dd>3</dd></dl></div></h2></article><article><h2>Violations</h2><nav class="tabs"><ul><li class="tab"><a href="#axe">Axe</a></li><li class="tab"><a href="#vnu">VNU</a></li></ul></nav><div class="revealed-by-tab" id="axe"><table class="violations"><thead><tr><th class="path">URL Path</th><th class="code">Code (axe docs)</th><th class="description">Description</th><th class="snippet">Snippet</th><th class="alert">Alert Level</th><th class="severity">Severity</th><th class="knownIssue">Known Issue</th><th class="info">Further Information</th></tr></thead><tbody></tbody></table></div><div class="revealed-by-tab" id="vnu"><table class="violations"><thead><tr><th class="path">URL Path</th><th class="code">Code (axe docs)</th><th class="description">Description</th><th class="snippet">Snippet</th><th class="alert">Alert Level</th><th class="severity">Severity</th><th class="knownIssue">Known Issue</th><th class="info">Further Information</th></tr></thead><tbody><tr><td class="path"><a href="https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000003/index.html" target="_blank">/some/3</a></td><td class="code"><a href="UNDEFINED" target="_blank">UNDEFINED</a></td><td class="description">Consider adding a “lang” attribute to the “html” start tag to declare the language of this document.</td><td class="snippet"><span class="code">TYPE html&gt;
+&lt;html&gt;&lt;head&gt;</span></td><td class="alert">INFO</td><td class="severity">info</td><td class="knownIssue"></td><td class="info"><span class="info"></span></td></tr><tr><td class="path"><a href="https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000002/index.html" target="_blank">/some/2</a></td><td class="code"><a href="UNDEFINED" target="_blank">UNDEFINED</a></td><td class="description">Consider adding a “lang” attribute to the “html” start tag to declare the language of this document.</td><td class="snippet"><span class="code">TYPE html&gt;
+&lt;html&gt;&lt;head&gt;</span></td><td class="alert">INFO</td><td class="severity">info</td><td class="knownIssue"></td><td class="info"><span class="info"></span></td></tr><tr><td class="path"><a href="https://build.tax.service.gov.uk/job/AIV/job/lost-credentials-a11y-test/23/artifact/pages/0000000001/index.html" target="_blank">/some/1</a></td><td class="code"><a href="UNDEFINED" target="_blank">UNDEFINED</a></td><td class="description">Consider adding a “lang” attribute to the “html” start tag to declare the language of this document.</td><td class="snippet"><span class="code">TYPE html&gt;
+&lt;html&gt;&lt;head&gt;</span></td><td class="alert">INFO</td><td class="severity">info</td><td class="knownIssue"></td><td class="info"><span class="info"></span></td></tr></tbody></table></div></article><script>const q = function () { return [].concat(...document.querySelectorAll.apply(document, arguments)) }
+
+document.querySelector('body').classList.add('js-enabled')
+
+;(function () {
+    const hiddenTabClass = 'hidden-waiting-for-tab-activation'
+    const allAreasToControl = []
+    const allTabs = []
+    let isFirstTab = true
+    q('.tabs .tab').forEach(tab => {
+        const link = tab.querySelector('a')
+        if (!link) {
+            console.error('Can\'t initialise a tab with no link')
+            return;
+        }
+        allTabs.push(tab)
+        const selectorForAreaToControl = '#' + link.getAttribute('href').split('#').join('')
+        if (isFirstTab) {
+            tab.classList.add('tab--active')
+        }
+        q(selectorForAreaToControl).forEach(areaToControl => {
+            allAreasToControl.push(areaToControl)
+            if (!isFirstTab) {
+                areaToControl.classList.add(hiddenTabClass)
+            }
+        })
+        link.addEventListener('click', (e) => {
+            allAreasToControl.forEach(areaToControl => {
+                areaToControl.classList.add(hiddenTabClass)
+            })
+            allTabs.forEach(tab => {
+                tab.classList.remove('tab--active')
+            })
+            tab.classList.add('tab--active')
+            q(selectorForAreaToControl).forEach(areaToControl => {
+                areaToControl.classList.remove(hiddenTabClass)
+            })
+            e.preventDefault()
+        })
+        isFirstTab = false
+    })
+})()
+</script></body></html>
