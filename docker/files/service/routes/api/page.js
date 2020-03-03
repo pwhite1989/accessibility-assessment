@@ -4,7 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const config = require('../../config/config')
 const rimraf = require("rimraf");
-const {capture, exclude} = require('../../service/urls')
+const {capture, exclude, error} = require('../../service/urls')
 
 var testOnlyRegEx = RegExp('test\-only');
 var stubRegEx = RegExp('http:\/\/localhost:[0-9]{4}\/([a-z/-]+\-stub)');
@@ -16,6 +16,11 @@ router.post('/', (req, res) => {
   const pageDirectory = path.join(config.pagesDirectory, '' + body.timestamp)
   logData.pageHTML = logData.pageHTML.substr(0, 100) + '...'
   logData.files = Object.keys(logData.files)
+  const errors = Object.assign({}, {errors:logData.errors})
+
+  for (var assetError in logData.errors) {
+    error(logData.errors[assetError].failedUrl, body.pageURL)
+  };
 
   //Capture the page for assessment if:
   //   - it hasn't already been captured and onePagePerPath is true
@@ -34,7 +39,7 @@ router.post('/', (req, res) => {
     Object.keys(fileList).forEach(fileName => {
       fs.writeFile(path.join(pageDirectory, fileName), fileList[fileName], (err, data) => {
         if (err) {throw err}
-        logger.log('INFO', `Captured ${fileName}`)
+        logger.log('INFO', `Captured ${fileName} for ${body.pageURL}`)
       })
     })
   } else {
