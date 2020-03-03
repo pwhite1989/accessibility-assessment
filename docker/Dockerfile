@@ -1,6 +1,7 @@
 FROM selenium/node-chrome:3.141.59-titanium
 
 ENV BUILD_URL ""
+ENV CAPTURE_ALL_PAGES false
 ENV APP_PORT 6010
 ENV JENKINS_USERNAME jenkins.user
 ENV JENKINS_API_KEY 1234abcd
