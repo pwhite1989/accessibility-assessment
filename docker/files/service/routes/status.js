@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const logger = require('../../logger')
-const setStatus = require('../../service/status')
+const logger = require('../logger')
+const setStatus = require('../service/status')
 
 const applicationStatus=['NOT_SET',
                         'READY_TO_ASSESS',
@@ -19,7 +19,6 @@ router.post('/:status', async (req, res, next) => {
     err.status=400
     return next(err)
   }
-
   setStatus(req.params.status)
   res.status(201).send()
 })

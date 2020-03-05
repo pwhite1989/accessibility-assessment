@@ -1,6 +1,6 @@
-const logger = require('../logger')
 const util = require('util');
 const exec = util.promisify(require('child_process').exec)
+const logger = require('../logger')
 const status = require('./status');
 
 async function runScript(command) {

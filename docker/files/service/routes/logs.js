@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const config = require('../../config/config')
 const path = require('path')
 const fs = require('fs')
+const config = require('../config')
 
 router.get('/urls', (req, res) => {
   res.json({capturedUrls:global.capturedUrls, excludedUrls: global.excludedUrls, errors: global.erroredAssets})

@@ -1,6 +1,6 @@
-var config = require('./config/config')
-var fs = require('fs')
+const fs = require('fs')
 const path = require('path')
+const config = require('./config')
 
 module.exports.log = function log(level, message) {
   const formatted_message = `{"level": "${level}", "message": "${message}", "type": "accessibility_logs", "app": "accessibility-assessment-service", "testSuite": "NotSet"}\n`

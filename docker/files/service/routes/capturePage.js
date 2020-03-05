@@ -1,16 +1,15 @@
 const router = require('express').Router();
-const logger = require('../../logger')
 const fs = require('fs')
 const path = require('path')
-const config = require('../../config/config')
-const rimraf = require("rimraf");
-const {capture, exclude, error} = require('../../service/urls')
+const logger = require('../logger')
+const config = require('../config')
+const {capture, exclude, error} = require('../service/urls')
 
 var testOnlyRegEx = RegExp('test\-only');
 var stubRegEx = RegExp('http:\/\/localhost:[0-9]{4}\/([a-z/-]+\-stub)');
 var htmlContentRegEx = RegExp('<\\s*html[^>]*>([\\s\\S]*?)<\\s*\/\\s*html>');
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
   const body = req.body;
   const logData = Object.assign({}, body)
   const pageDirectory = path.join(config.pagesDirectory, '' + body.timestamp)
@@ -47,7 +46,7 @@ router.post('/', (req, res) => {
       exclude(body.pageURL)
     }
   }
-  res.status('201').send('Done')
+  res.status('201').send()
 })
 
 module.exports = router;

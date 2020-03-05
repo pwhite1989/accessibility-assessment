@@ -1,11 +1,11 @@
 const router = require('express').Router();
 const path = require('path')
 const fs = require('fs')
-const config = require('../../config/config')
-const logger = require('../../logger');
 const archiver = require('archiver')
-const status = require('../../service/status')
-const { runAssessment } = require('../../service/scripts')
+const config = require('../config')
+const logger = require('../logger');
+const status = require('../service/status')
+const { runAssessment } = require('../service/scripts')
 
 const reportPath = path.join(config.outputDir, config.accessibility_assessment_report)
 const pagesPath = path.join(config.pagesDirectory)
