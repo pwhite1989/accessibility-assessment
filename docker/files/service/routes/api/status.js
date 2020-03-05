@@ -5,9 +5,8 @@ const setStatus = require('../../service/status')
 const applicationStatus=['NOT_SET',
                         'READY_TO_ASSESS',
                         'ASSESSING_PAGES',
-                        'ASSESSMENT_COMPLETE',
-                        'GENERATING_REPORT',
-                        'REPORT_READY']
+                        'REPORT_READY',
+                        'PAGE_ASSESSMENT_FAILED']
 
 router.get('/', (req, res) => {
   logger.log("INFO",`Returning Accessibility assessment service status:${global.status}`)
@@ -22,7 +21,7 @@ router.post('/:status', async (req, res, next) => {
   }
 
   setStatus(req.params.status)
-  res.status(204).send()
+  res.status(201).send()
 })
 
 module.exports = router;

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 test_suite_name=$(echo ${BUILD_URL} | rev | cut -d'/' -f 3 | rev)
-artefact_location=${BUILD_URL}artifact/pages
+artefact_location=${BUILD_URL}artifact/pages  # Empty value is not sent in fm jenkins.
 
 PARSER_OUTPUT="$(java -Dtest.suite.name="${test_suite_name}" \
      -Dtest.suite.file.location="${HOME}/pages" \

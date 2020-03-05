@@ -4,34 +4,16 @@ const fs = require('fs')
 const config = require('../../config/config')
 const logger = require('../../logger');
 const archiver = require('archiver')
-const { exec }  = require('child_process');
 const status = require('../../service/status')
+const { runAssessment } = require('../../service/scripts')
 
 const reportPath = path.join(config.outputDir, config.accessibility_assessment_report)
 const pagesPath = path.join(config.pagesDirectory)
 
 router.post('/run-assessment', (req, res) => {
-  status("ASSESSING_PAGES")
-  exec('cd /home/seluser && ./run_assessment.sh', (err, stdout, stderr) => {
-    if (err) {
-      logger.log("ERROR", err)
-    } else {
-     status("ASSESSMENT_COMPLETE")
-    }
-  });
-  res.status(200).send("Assessment Triggered")
-})
-
-router.post('/generate', (req, res) => {
-  status("GENERATING_REPORT")
-  exec('cd /home/seluser && ./generate_report.sh', (err, stdout, stderr) => {
-    if (err) {
-      logger.log("ERROR", err)
-    } else {
-     status("REPORT_READY")
-    }
-  });
-  res.status(200).send("Generating report")
+  status("ASSESSING_PAGES");
+  runAssessment();
+  res.status(202).json({message: "Page assessment triggered."}).send();
 })
 
 router.get('/html-report', (req, res) => {
@@ -48,7 +30,7 @@ router.get('/html-report', (req, res) => {
 
 const zipFileName = path.join(config.outputDir, 'report.zip')
 
-router.get('/bundle', (req, res) => {
+router.get('/report-bundle', (req, res) => {
   var output = fs.createWriteStream(zipFileName);
   var archive = archiver('zip', {
     zlib: { level: 9 }
