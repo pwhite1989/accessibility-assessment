@@ -4,14 +4,14 @@ const fs = require('fs')
 const archiver = require('archiver')
 const config = require('../config')
 const logger = require('../logger');
-const status = require('../service/status')
+const { applicationStatus } = require('../service/status')
 const { runAssessment } = require('../service/scripts')
 
 const reportPath = path.join(config.outputDir, config.accessibility_assessment_report)
 const pagesPath = path.join(config.pagesDirectory)
 
 router.post('/run-assessment', (req, res) => {
-  status("ASSESSING_PAGES");
+  applicationStatus("ASSESSING_PAGES");
   runAssessment();
   res.status(202).json({message: "Page assessment triggered."}).send();
 })

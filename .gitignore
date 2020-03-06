@@ -22,3 +22,5 @@ dist
 apps/esdata/*
 docker/files/service/node_modules
 docker/files/service/package-lock.json
+docker/files/service/output
+docker/files/service/pages

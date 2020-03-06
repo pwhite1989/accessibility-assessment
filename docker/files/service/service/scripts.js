@@ -1,13 +1,13 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec)
 const logger = require('../logger')
-const status = require('./status');
+const { applicationStatus } = require('./status');
 
 async function runScript(command) {
   const { stdout, stderr } = await exec(command)
   if(stderr) {
     logger.log("ERROR", `Command \'${command}\' ran with the following errors: ${stderr}`);
-    status('PAGE_ASSESSMENT_FAILED')
+    applicationStatus('PAGE_ASSESSMENT_FAILED')
     return
   }
 }
@@ -15,5 +15,5 @@ async function runScript(command) {
 module.exports.runAssessment = async () => {
   await runScript('cd /home/seluser && ./run_assessment.sh');
   await runScript('cd /home/seluser && ./generate_report.sh');
-  status('REPORT_READY');
+  applicationStatus('REPORT_READY');
 }

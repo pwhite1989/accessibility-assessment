@@ -3,7 +3,8 @@ const fs = require('fs')
 const path = require('path')
 const logger = require('../logger')
 const config = require('../config')
-const {capture, exclude, error} = require('../service/urls')
+const { capture, exclude, error } = require('../service/urls')
+const { applicationStatus } = require('../service/status')
 
 var testOnlyRegEx = RegExp('test\-only');
 var stubRegEx = RegExp('http:\/\/localhost:[0-9]{4}\/([a-z/-]+\-stub)');
@@ -46,6 +47,7 @@ router.post('/', (req, res, next) => {
       exclude(body.pageURL)
     }
   }
+  applicationStatus('PAGES_CAPTURED')
   res.status('201').send()
 })
 

@@ -5,7 +5,6 @@ const logger = require('./logger')
 let app = express();
 app.use(express.json({limit: '500mb',}));
 
-
 //Define routes
 const logs = require('./routes/logs.js')
 const capturePage = require('./routes/capturePage.js')

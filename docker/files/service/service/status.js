@@ -1,8 +1,10 @@
 const logger = require('../logger')
 
-global.status = 'NOT_SET'
+global.status = 'READY'
 
-module.exports = function (newStatus) {
-  logger.log("INFO", `Setting accessibility assessment service status from ${global.status} to ${newStatus}`)
-  global.status = newStatus
+module.exports.applicationStatus = function (newApplicationStatus) {
+  if (newApplicationStatus != global.status) {
+    logger.log("INFO", `Setting accessibility assessment service status from ${global.status} to ${newApplicationStatus}`)
+    global.status = newApplicationStatus
+  }
 }
