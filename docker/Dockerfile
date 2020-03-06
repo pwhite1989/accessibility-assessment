@@ -17,17 +17,17 @@ USER root
 
 WORKDIR ${HOME}
 
+COPY --chown=seluser:seluser files/start.sh ${HOME}/start.sh
 COPY --chown=seluser:seluser files/generate_report.sh ${HOME}/generate_report.sh
-COPY --chown=seluser:seluser files/run_service.sh ${HOME}/run_service.sh
 COPY --chown=seluser:seluser files/run_assessment.sh ${HOME}/run_assessment.sh
 COPY --chown=seluser:seluser files/page-accessibility-check.jar ${HOME}/page-accessibility-check.jar
-COPY --chown=seluser:seluser files/service ${HOME}/service
+COPY --chown=seluser:seluser files/app ${HOME}/app
 COPY --chown=seluser:seluser files/report ${HOME}/report
 
 RUN sudo chmod 777 ${HOME}/run_assessment.sh \
       && sudo chmod 777 ${HOME}/generate_report.sh \
-      && sudo chmod 755 ${HOME}/run_service.sh \
-      && sudo chmod 755 ${HOME}/service/app.js \
+      && sudo chmod 755 ${HOME}/start.sh \
+      && sudo chmod 755 ${HOME}/app/app.js \
       && sudo chmod 755 ${HOME}/report/prepare-report.js \
       && sudo mkdir ${HOME}/output \
       && sudo chmod 755 ${HOME}/output \
@@ -52,11 +52,11 @@ RUN   cd ${HOME} \
       && npm install chromedriver@${NPM_CHROME_DRIVER_VERSION} --save-dev \
       && cd ${HOME} \
       && npm install vnu-jar@${NPM_VNU_VERSION} -g \
-      && cd ${HOME}/service \
+      && cd ${HOME}/app \
       && npm install \
       && cd ${HOME}/report \
       && npm install
 
 EXPOSE 6010
 
-CMD ["/bin/bash", "/home/seluser/run_service.sh"]
+CMD ["/bin/bash", "/home/seluser/start.sh"]
