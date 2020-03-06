@@ -4,7 +4,7 @@ const fs = require('fs')
 const archiver = require('archiver')
 const config = require('../config')
 const logger = require('../logger');
-const { applicationStatus } = require('../service/status')
+const { applicationStatus } = require('../service/globals')
 const { runAssessment } = require('../service/scripts')
 
 router.post('/run-assessment', (req, res) => {

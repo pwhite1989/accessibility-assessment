@@ -4,7 +4,7 @@ const path = require('path')
 const logger = require('../logger')
 const config = require('../config')
 const { capture, exclude, error } = require('../service/urls')
-const { applicationStatus } = require('../service/status')
+const { applicationStatus } = require('../service/globals')
 
 var testOnlyRegEx = RegExp('test\-only');
 var stubRegEx = RegExp('http:\/\/localhost:[0-9]{4}\/([a-z/-]+\-stub)');
