@@ -52,8 +52,10 @@ router.get('/bundle', (req, res) => {
   });
 
   archive.pipe(output);
-  archive.file(reportPath, { name: config.accessibility_ssessment_report });
-  archive.directory(pagesPath, { name: 'pages' });
+  let reportFilename = path.join(config.outputDir, config.accessibilityAssessmentReportHtml);
+  archive.file(reportFilename, { name: config.accessibilityAssessmentReportHtml });
+  let pagesDirectory = path.join(config.pagesDirectory);
+  archive.directory(pagesDirectory, 'pages' );
   archive.finalize();
 
   output.on('close', function() {
@@ -70,7 +72,7 @@ router.get('/bundle', (req, res) => {
 function readZip(res) {
   let readStream = fs.createReadStream(zipFileName);
     res.set('Content-Type', 'application/zip');
-    res.set('Content-Disposition', 'attachment; filename="' + zipFileName + '"')
+    res.set('Content-Disposition', 'attachment; filename="report.zip"')
     readStream.pipe(res);
     readStream.on('error', (err) => {
       logger.log('ERROR', 'Error reading accessibility assessment report file. Failed with ' + err);
