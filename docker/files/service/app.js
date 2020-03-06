@@ -7,6 +7,7 @@ app.use(express.json({limit: '500mb',}));
 
 //Define routes
 const logs = require('./routes/logs.js')
+const initialise = require('./routes/initialise.js')
 const capturePage = require('./routes/capturePage.js')
 const report = require('./routes/report.js')
 const status = require('./routes/status.js')
@@ -14,6 +15,7 @@ const status = require('./routes/status.js')
 //Add middleware
 app.use('/captured-pages', express.static('pages'));
 app.use('/api/logs', logs);
+app.use('/api/initialise', initialise);
 app.use('/api/capture-page', capturePage);
 app.use('/api/report', report);
 app.use('/api/status', status);

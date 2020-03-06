@@ -1,6 +1,8 @@
 const logger = require('../logger')
 
 global.status = 'READY'
+global.testSuite = 'not-set'
+global.buildUrl = ''
 
 module.exports.applicationStatus = function (newApplicationStatus) {
   if (newApplicationStatus != global.status) {

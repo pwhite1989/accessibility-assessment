@@ -4,7 +4,14 @@ const logger = require('../logger')
 const { applicationStatus } = require('./status');
 
 async function runScript(command) {
-  const { stdout, stderr } = await exec(command)
+  let stderr = ''
+  try {
+    let { stdout, stderr } = await exec(command)
+  } catch(error) {
+    logger.log('ERROR', `Failed to run script: ${error}`)
+    applicationStatus('PAGE_ASSESSMENT_FAILED')
+    return
+  }
   if(stderr) {
     logger.log("ERROR", `Command \'${command}\' ran with the following errors: ${stderr}`);
     applicationStatus('PAGE_ASSESSMENT_FAILED')
@@ -13,7 +20,7 @@ async function runScript(command) {
 }
 
 module.exports.runAssessment = async () => {
-  await runScript('cd /home/seluser && ./run_assessment.sh');
+  await runScript(`cd /home/seluser && ./run_assessment.sh ${global.testSuite} ${global.buildUrl}`);
   await runScript('cd /home/seluser && ./generate_report.sh');
   applicationStatus('REPORT_READY');
 }

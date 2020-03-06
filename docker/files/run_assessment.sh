@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
-test_suite_name=$(echo ${BUILD_URL} | rev | cut -d'/' -f 3 | rev)
-artefact_location=${BUILD_URL}artifact/pages  # Empty value is not sent in fm jenkins.
+test_suite_name=${1:-not-set}
+build_url=${2:-}
+artefact_location=${build_url}artifact/pages
 
-PARSER_OUTPUT="$(java -Dtest.suite.name="${test_suite_name}" \
+if [ -z "$2" ]
+then
+  artefact_location=./pages
+fi
+
+java -Dtest.suite.name="${test_suite_name}" \
      -Dtest.suite.file.location="${HOME}/pages" \
      -Dtest.suite.artefact.location="${artefact_location}" \
      -Dconfig.file="${HOME}/global-filters.conf" \
-     -Dtest.suite.build.url="${BUILD_URL}" \
-     -jar ${HOME}/page-accessibility-check.jar 2>&1)"
+     -Dtest.suite.build.url="${build_url}" \
+     -jar ${HOME}/page-accessibility-check.jar 2>&1
