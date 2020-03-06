@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const { applicationStatus } = require('../service/globals');
-const { runAssessment } = require('../service/scripts');
+const { applicationStatus } = require('../services/globals');
+const { runAssessment } = require('../services/scripts');
 
 router.post('/', (req, res) => {
   applicationStatus("ASSESSING_PAGES");

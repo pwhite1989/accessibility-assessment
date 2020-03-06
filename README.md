@@ -74,16 +74,37 @@ As mentioned in the previous section, all alerts and saved objects will be writt
 
 If you wish to clear down Elastic Search, simply delete everything in this directory.  I.e. `rm -r apps/esdata/*` Note that doing so will also delete the Index and other Visualisation saved objects imported in the **Visualising Violations in Kibana** section above.
 
-## image improvements
-TODO:
-- set the test suite var globally, ensure that the service logs with Test suite set.
-- implement the page capture env
-- update the page-accessibility-check app to set a relative page link (to the bundle) and absolute link to the kibana logs.
-- surface all urls/excluded urls and logs via endpoint
-- remove writing to fs for urls/excluded urls.
-- review error handling???
-- create a script to test against jenkins builds.
-- 
+## Image improvements
+- DONE - generate the html report at the end of the assessment, not as a separate call post assessment
+- DONE - surface all urls/excluded urls and logs via endpoint
+- DONE - remove writing to fs for urls/excluded urls.
+- DONE - implement the page capture env
+- DONE - review error handling?
+- DONE - restructure project to remove the index.js and just assign routes
+- DONE - remove the post status endpoint.  All statuses are set from services/routes within the app.
+- DONE - implement test endpoint to surface kibana-log-json
+- DONE - set the test suite var globally, ensure that the service logs with Test suite set.
+- DONE - introduce a global props service and remove direct setting of global values in routes/services
+- DONE - resolve BUG with report bundle directory structure (introduced as a result of this refactor)
+- DONE - move the assessmet trigger endpoint out of the reports route
+- DONE - rename the root folder from service to app,
+- DONE - implement a /reset endpoint.  To remove url logs, pages dir, reports.  Keep application logs.
+- DONE - remove the DOCTYPE line
+
+### Remaining work
+- IN PROGRESS - implement a /shutdown
+- IN PROGRESS - update the page-accessibility-check app to set a relative page link (to the bundle) and absolute link to the kibana logs.
+
+*Packaging:*
+-  move scripts and jar within the app.  Move app to parent directory to it's able to run on it's own outside of a docker container.
+- move the application to the root directory. Move bash scripts within the service and consider executing the contents of these scripts from the service. Update build-image and make file to copy this into place when packaging the application.
+
+*Known bugs:*
+- create a script to test against bundles archived in jenkins.
+- BUG resolve issue with serving static pages.
+- BUG running trigger assessment from the wrong status should fail gracefully
+- ...
+
 
 # License
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").

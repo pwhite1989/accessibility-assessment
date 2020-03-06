@@ -20,7 +20,8 @@ dist
 
 # project specific
 apps/esdata/*
-docker/files/service/node_modules
-docker/files/service/package-lock.json
-docker/files/service/output
-docker/files/service/pages
+docker/files/app/node_modules
+docker/files/app/package-lock.json
+docker/files/app/output
+docker/files/app/pages
+docker/files/app/accessibility-assessment-service.log

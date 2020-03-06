@@ -10,7 +10,7 @@ docker rm a11y
 docker run --cpus 3  \
     --name a11y \
     -v $(pwd)/docker/files/output:/home/seluser/output \
-    -v $(pwd)/docker/files/service:/home/seluser/service \
+    -v $(pwd)/docker/files/app:/home/seluser/app \
     -v $(pwd)/docker/files/run_assessment.sh:/home/seluser/run_assessment.sh \
     -p 6010:6010 \
     accessibility-assessment:SNAPSHOT

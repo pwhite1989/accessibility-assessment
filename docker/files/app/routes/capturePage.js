@@ -3,8 +3,8 @@ const fs = require('fs')
 const path = require('path')
 const logger = require('../logger')
 const config = require('../config')
-const { capture, exclude, error } = require('../service/urls')
-const { applicationStatus } = require('../service/globals')
+const { capture, exclude, error } = require('../services/urls')
+const { applicationStatus } = require('../services/globals')
 
 var testOnlyRegEx = RegExp('test\-only');
 var stubRegEx = RegExp('http:\/\/localhost:[0-9]{4}\/([a-z/-]+\-stub)');
@@ -33,7 +33,7 @@ router.post('/', (req, res, next) => {
       && htmlContentRegEx.test(body.pageHTML)){
 
     capture(body.pageURL)
-    const fileList = Object.assign({}, body.files, {'index.html': '<!DOCTYPE html>\n' + body.pageHTML}, {'data': body.pageURL})
+    const fileList = Object.assign({}, body.files, {'index.html': body.pageHTML}, {'data': body.pageURL})
     fs.mkdirSync(pageDirectory, { recursive: true })
 
     Object.keys(fileList).forEach(fileName => {
