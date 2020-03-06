@@ -7,31 +7,46 @@ const logger = require('../logger');
 const { applicationStatus } = require('../service/status')
 const { runAssessment } = require('../service/scripts')
 
-const reportPath = path.join(config.outputDir, config.accessibility_assessment_report)
-const pagesPath = path.join(config.pagesDirectory)
-
 router.post('/run-assessment', (req, res) => {
   applicationStatus("ASSESSING_PAGES");
   runAssessment();
   res.status(202).json({message: "Page assessment triggered."}).send();
 })
 
-router.get('/html-report', (req, res) => {
-  let readStream = fs.createReadStream(reportPath);
-    readStream.pipe(res);
+router.get('/html', (req, res, next) => {
+  if(global.status != 'REPORT_READY') {
+    return res.status(200).send('<html><body>The html report is not available.</body></html>');
+  }
+  filePath = path.join(config.outputDir, config.accessibilityAssessmentReportHtml);
+  respondWithFile(filePath, res, next);
+});
+
+router.get('/json', (req, res, next) => {
+  if(global.status != 'REPORT_READY') {
+    return res.status(200).json({}).send();
+  }
+  let filePath = path.join(config.outputDir, config.accessibilityAssessmentReportJson);
+  respondWithFile(filePath, res, next);
+});
+
+function respondWithFile(filePath, response, next) {
+  let readStream = fs.createReadStream(filePath);
+    readStream.pipe(response);
     readStream.on('error', (err) => {
-      logger.log('ERROR', 'Error reading accessibility assessment report file. Failed with ' + err);
-      return res.sendStatus(500);
+      let error = new Error(`Failed to read the report from file: ${filePath}. See details: ${err}`);
+      error.status=500;
+      next(error);
     });
-    res.on('error', (err) => {
+    response.on('error', (err) => {
       logger.log('ERROR', 'Error in write stream. Writing accessibility assessment report file failed with ' + err);
     });
-})
+}
 
 const zipFileName = path.join(config.outputDir, 'report.zip')
 
-router.get('/report-bundle', (req, res) => {
+router.get('/bundle', (req, res) => {
   var output = fs.createWriteStream(zipFileName);
+  var pagesPath = path.join(config.pagesDirectory)
   var archive = archiver('zip', {
     zlib: { level: 9 }
   });
