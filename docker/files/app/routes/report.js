@@ -27,7 +27,7 @@ function respondWithFile(filePath, response, next) {
     readStream.on('error', (err) => {
       let error = new Error(`Failed to read the report from file: ${filePath}. See details: ${err}`);
       error.status=500;
-      next(error);
+      return next(error);
     });
     response.on('error', (err) => {
       logger.log('ERROR', 'Error in write stream. Writing accessibility assessment report file failed with ' + err);
@@ -36,7 +36,14 @@ function respondWithFile(filePath, response, next) {
 
 const zipFileName = path.join(config.outputDir, 'report.zip')
 
-router.get('/bundle', (req, res) => {
+router.get('/bundle', (req, res, next) => {
+
+  if(global.status != 'REPORT_READY' ) {
+    let err = new Error(`The report is not available.`)
+    err.status=400
+    return next(err)
+  }
+
   var output = fs.createWriteStream(zipFileName);
   var pagesPath = path.join(config.pagesDirectory)
   var archive = archiver('zip', {

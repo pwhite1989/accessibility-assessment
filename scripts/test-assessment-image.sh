@@ -11,8 +11,8 @@ docker run --cpus 3  \
     --name a11y \
     -v $(pwd)/docker/files/output:/home/seluser/output \
     -v $(pwd)/docker/files/app:/home/seluser/app \
-    -v $(pwd)/docker/files/application.conf:/home/seluser/application.conf \
     -p 6010:6010 \
     accessibility-assessment:SNAPSHOT
 
 # -v $(pwd)/docker/files/run_assessment.sh:/home/seluser/run_assessment.sh \
+# -v $(pwd)/docker/files/app:/home/seluser/app \  # FOR TESTING CHANGES WITHIN THE IMAGE

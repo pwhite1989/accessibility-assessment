@@ -166,37 +166,7 @@
 					"raw": "{\n    \"testSuite\": \"\",\n    \"buildUrl\": \"\"\n}"
 				},
 				"url": {
-					"raw": "http://localhost:6010/api/initialise",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "6010",
-					"path": [
-						"api",
-						"initialise"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "Shut Down the application",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"testSuite\": \"awesome-tests-a11y-tests\",\n    \"buildUrl\": \"https://build.tax.service.gov.uk/job/ACE/job/awesome-tests-a11y-tests/19/\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:6010/api/app/shut-down",
+					"raw": "http://localhost:6010/api/app/initialise",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -205,7 +175,7 @@
 					"path": [
 						"api",
 						"app",
-						"shut-down"
+						"initialise"
 					]
 				},
 				"description": ""

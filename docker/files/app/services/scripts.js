@@ -22,5 +22,6 @@ async function runScript(command) {
 module.exports.runAssessment = async () => {
   await runScript(`cd /home/seluser && ./run_assessment.sh ${global.testSuite} ${global.buildUrl}`);
   await runScript('cd /home/seluser && ./generate_report.sh');
+  if(global.status == 'PAGE_ASSESSMENT_FAILED') {return}
   applicationStatus('REPORT_READY');
 }
