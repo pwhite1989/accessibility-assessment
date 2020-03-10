@@ -1,6 +1,7 @@
 const util = require('util');
 const exec = util.promisify(require('child_process').exec)
 const logger = require('../logger')
+const config = require('../config')
 const { applicationStatus } = require('./globals');
 
 async function runScript(command) {
@@ -20,8 +21,8 @@ async function runScript(command) {
 }
 
 module.exports.runAssessment = async () => {
-  await runScript(`cd /home/seluser && ./run_assessment.sh ${global.testSuite} ${global.buildUrl}`);
-  await runScript('cd /home/seluser && ./generate_report.sh');
+  await runScript(`cd ${config.scriptDir} && ./run_assessment.sh ${global.testSuite} ${global.buildUrl}`);
+  await runScript(`cd ${config.scriptDir} && ./generate_report.sh`);
   if(global.status == 'PAGE_ASSESSMENT_FAILED') {return}
   applicationStatus('REPORT_READY');
 }

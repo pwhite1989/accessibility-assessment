@@ -9,8 +9,9 @@ then
 fi
 
 java -Dtest.suite.name="${test_suite_name}" \
+     -Duser.dir="${HOME}" \
      -Dtest.suite.file.location="${HOME}/pages" \
      -Dtest.suite.artefact.location="${artefact_location}" \
      -Dconfig.file="${HOME}/global-filters.conf" \
      -Dtest.suite.build.url="${build_url}" \
-     -jar ${HOME}/page-accessibility-check.jar 2>&1
+     -jar $(pwd)/page-accessibility-check.jar 2>&1
