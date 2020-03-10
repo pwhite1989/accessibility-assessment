@@ -51,8 +51,7 @@ router.get('/bundle', (req, res) => {
   archive.finalize();
 
   output.on('close', function() {
-    logger.log("INFO", archive.pointer() + ' total bytes');
-    logger.log("INFO", 'archiver has been finalized and the output file descriptor has closed.');
+    logger.log("INFO", `Report bundle of size ${archive.pointer()} has been created.`);
     readZip(res)
   });
 
@@ -65,6 +64,7 @@ function readZip(res) {
   let readStream = fs.createReadStream(zipFileName);
     res.set('Content-Type', 'application/zip');
     res.set('Content-Disposition', 'attachment; filename="report.zip"')
+    logger.log('INFO', 'Report bundle ')
     readStream.pipe(res);
     readStream.on('error', (err) => {
       logger.log('ERROR', 'Error reading accessibility assessment report file. Failed with ' + err);

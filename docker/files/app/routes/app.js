@@ -15,16 +15,12 @@ router.post('/initialise', async (req, res, next) => {
   res.status(200).json({ applicationStatus: global.status, testSuite: global.testSuite, buildUrl: global.buildUrl}).send();
 })
 
-router.post('/shut-down', async (req, res, next) => {
-
-  res.status(200).send();
-})
-
 router.post('/reset', async (req, res, next) => {
   rimraf.sync(config.pagesDirectory);
   rimraf.sync(path.join(config.outputDir, config.accessibilityAssessmentReportHtml));
   rimraf.sync(path.join(config.outputDir, config.accessibilityAssessmentReportJson));
   reset();
+  logger.log('INFO', 'Assessment image reset. All information and reports have been deleted.')
   res.status(200).send();
 })
 

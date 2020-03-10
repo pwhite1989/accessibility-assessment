@@ -6,21 +6,14 @@ const { reset } = require('./services/globals')
 let app = express();
 app.use(express.json({limit: '500mb',}));
 
-//Define routes
-const logs = require('./routes/logs.js')
-const capturePage = require('./routes/capturePage.js')
-const assessPages = require('./routes/assessPages.js')
-const report = require('./routes/report.js')
-const status = require('./routes/status.js')
-
-//Add middleware
-app.use('/captured-pages', express.static('pages'));
-app.use('/api/logs', logs);
+//Define Routes
+app.use('/api/logs', require('./routes/logs.js'));
 app.use('/api/app', require('./routes/app.js'));
-app.use('/api/capture-page', capturePage);
-app.use('/api/assess-pages', assessPages);
-app.use('/api/report', report);
-app.use('/api/status', status);
+app.use('/api/capture-page', require('./routes/capturePage.js'));
+app.use('/api/assess-pages', require('./routes/assessPages.js'));
+app.use('/api/report', require('./routes/report.js'));
+app.use('/api/status', require('./routes/status.js'));
+app.use('/api/report/pages', express.static(config.pagesDirectory));
 
 //Add error handling
 app.use('/api', errorHandler);
