@@ -8,7 +8,6 @@ PYTHON_VERSION := $(shell cat .python-version)
 build:
 	@echo '********** Building docker image ************'
 	@cp -r app docker/files/
-	@rm -r docker/files/app/node_modules
 	@rm docker/files/app/package-lock.json
 #	@pipenv run prepare-release
 #	@umask 0022
