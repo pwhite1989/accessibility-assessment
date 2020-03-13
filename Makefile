@@ -4,14 +4,12 @@ PYTHON_VERSION := $(shell cat .python-version)
 .PHONY: check_docker build authenticate_to_artifactory push_image prep_version_incrementor clean help compose
 .DEFAULT_GOAL := help
 
-#build: prep_version_incrementor ## Build the docker image
-build:
+build: prep_version_incrementor ## Build the docker image
 	@echo '********** Building docker image ************'
 	@cp -r app docker/files/
-	@rm docker/files/app/package-lock.json
-#	@pipenv run prepare-release
-#	@umask 0022
-#	@docker build --no-cache --tag artefacts.tax.service.gov.uk/accessibility-assessment:$$(cat .version) docker
+	@pipenv run prepare-release
+	@umask 0022
+	@docker build --no-cache --tag artefacts.tax.service.gov.uk/accessibility-assessment:$$(cat .version) docker
 
 authenticate_to_artifactory:
 	@docker login --username ${ARTIFACTORY_USERNAME} --password "${ARTIFACTORY_PASSWORD}"  artefacts.tax.service.gov.uk
