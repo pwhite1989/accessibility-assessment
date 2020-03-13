@@ -14,6 +14,7 @@ docker run --cpus 3  \
     -p 6010:6010 \
     accessibility-assessment:SNAPSHOT
 
-# You can use the below volumen mount option in the above docker commands for testing
-# within the image.
+# For local development, include the commented out line below (which mounts ./app
+#    within the image).
+
 # -v ${PROJECT_DIR}/app:/home/seluser/app \
