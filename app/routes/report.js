@@ -46,9 +46,7 @@ router.get('/bundle', (req, res, next) => {
 
   var output = fs.createWriteStream(zipFileName);
   var pagesPath = path.join(config.pagesDirectory)
-  var archive = archiver('zip', {
-    zlib: { level: 9 }
-  });
+  var archive = archiver('zip', { zlib: { level: 9 } });
 
   archive.pipe(output);
   let reportFilename = path.join(config.outputDir, config.accessibilityAssessmentReportHtml);
@@ -71,7 +69,6 @@ function readZip(res) {
   let readStream = fs.createReadStream(zipFileName);
     res.set('Content-Type', 'application/zip');
     res.set('Content-Disposition', 'attachment; filename="report.zip"')
-    logger.log('INFO', 'Report bundle ')
     readStream.pipe(res);
     readStream.on('error', (err) => {
       logger.log('ERROR', 'Error reading accessibility assessment report file. Failed with ' + err);

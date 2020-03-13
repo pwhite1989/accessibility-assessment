@@ -5,7 +5,8 @@ ENV APP_PORT 6010
 ENV JENKINS_USERNAME jenkins.user
 ENV JENKINS_API_KEY 1234abcd
 ENV LOG_EXPORT_WAIT 30
-ENV NODE_VERSION 10.12.0
+ENV NVM_VERSION 0.35.3
+ENV NODE_VERSION 12.15.0
 ENV NPM_AXE_VERSION 3.1.0
 ENV NPM_VNU_VERSION 19.6.7
 ENV NPM_CHROME_DRIVER_VERSION 76.0.0
@@ -37,7 +38,7 @@ USER seluser
 RUN   cd ${HOME} \
       && echo "${NODE_VERSION}" > .nvmrc \
       && mv .nvmrc .nvmrc.bk \
-      && curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash \
+      && curl -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash \
       && . "${NVM_DIR}/nvm.sh" \
       && mv .nvmrc.bk .nvmrc \
       && nvm install \
