@@ -1,42 +1,46 @@
-# Accessibility Assessment
-The accessibility assessment image is the service running in our Jenkins CI which captures complete web pages, assesses them with [axe](https://www.deque.com/axe/) and [Nu HTML Checker](https://validator.github.io/validator/), and produces reports in Jenkins (archived as a basic HTML report) and Kibana.
+# Accessibility Assessment Service
+The accessibility assessment service is published as a docker image, and runs as a sidecar container to our jenkins slaves.  It exposes a REST API for capturing complete web pages (HTML, js, css) which are then assessed with [axe](https://www.deque.com/axe/) and [Nu HTML Checker](https://validator.github.io/validator/).  The service then publishes the violations found in a basic HTML report which is archived in Jenkins, and in our Management instance of Kibana.
 
-This resulting image contains the following components:
-- accessibility-assessment-service: a simple node express service that exposes an api which the jenkins slave uses to orchestrate accessibility assessments.
-- page-accessibility-check: a jar built from the Scala project .... which integrates axe and vnu assessments with the express service
-- acessibility-reports: another node project which generates a html report based on the json output of the page-accessibility-check application.
+This incarnation of the service was created following an accessibility audit which was conducted using the page coverage achieved by our UI test suites in CI.  The implementation arrived at for the audit is the result of prioritising expedience over all else (cost of improvement/maintenance/support).  Future work on the accessibility-assessment image will include collapsing the below components into a single Scala or Node service.
+
+At present the image is made up of the following components:
+- **accessibility-assessment-service**: a simple [node express](https://expressjs.com/) service that exposes a REST API which is consumed by the jenkins slave and our page-capture-chrome-extension to capture pages and orchestrate accessibility assessments.
+- **page-accessibility-check**: a jar published by [this Scala project](https://github.com/hmrc/page-accessibility-check) which executes axe and vnu assessments against a collection of pages.  This app is triggered by the accessibility-assessment-service.
+- **acessibility-reports**: another node project which generates a html report based on the json output of the page-accessibility-check application.
 
 
-The intention is that future improvements to the accessibility-assessment image collapse the above components into a single Scala or Node service.
+# Building the Image in CI
+The [Makefile](Makefile) at the root of this project is used by Jenkins to build and publish new versions of this image to artefactory for use in CI.
 
-# Building the Image
-## For use in CI
-The [Makefile](Makefile) at the root of this project is used by Jenkins to build and push new versions of this image to artefactory for use in CI.
+# Development
+*Note that to date this project has only been developed on Mac OSX.*
 
-## In your local dev environment
-You'll need to ensure that your development environment meets the following pre-reqs:
-- Install [docker](https://docs.docker.com/install), v19.x or above
-- Ensure that your `WORKSPACE` environment variable is set, and that this project is checked out to the root of the workspace.  I.e. ${WORKSPACE}/accessibility-assessment
+## Pre-requisites
+For local development you will need to satisfy the following pre-reqs:
+- Install [docker](https://docs.docker.com/install), v19.x or above;
+- set your `WORKSPACE` environment variable, and ensure that this project is cloned in the root of the workspace.  I.e. ${WORKSPACE}/accessibility-assessment
 
-To build the **accessibility-assessment:SNAPSHOT** image for local use execute the `. scripts/build-local-image.sh` script.
+## Building the image
+To build the **accessibility-assessment:SNAPSHOT** docker image for local use execute the `. scripts/build-local-image.sh` script.
 
-*Note: to date this has only been tested on Mac OSX.*
-
-# Local development
+## Running the image
 To run the image as a docker container in your local dev environment, execute `. scripts/run-local.sh`.
 
-This service requires particular versions of both vnu and axe be installed in the running environment, and be configured to run as cli tools.  To get this working you'll subsequently need to ensure that appropriate versions of nvm/npm/chromedriver be installed.  As the [Dockerfile](docker/Dockerfile) takes care of this complexity, we've found that the quickest and most reliable way to develop and test the service is by mounting the [app](app/) directory into the running docker container.
+## Making changes to the service
+This service requires particular versions of both vnu and axe be installed and running as cli tools in the execution environment.  Furthermore, installation of axe/vnu require that nvm/npm/chromedriver also be installed.  As the [Dockerfile](docker/Dockerfile) contains all of the setup configuration required to get the service running, we've found that the quickest and most reliable way to develop and test the service is by mounting the [app](app/) directory into the running docker container.
 
 Simply include the following `docker run` option in the [run-local.sh](scripts/run-local.sh) script before executing:
 
-```-v ${PROJECT_DIR}/app:/home/seluser/app \```
+```bash
+-v ${PROJECT_DIR}/app:/home/seluser/app \
+```
 
 # Testing
-## Postman
+## Postman Collection
 There is a basic [Postman](https://www.postman.com/downloads/) collection in the [test](test/postman-collections) directory which contains a list of basic requests for each of the endpoints implemented in the service.
 
 ## Acceptance tests
-A more thorough automated test suite has been implemented in the [accessibility-assessment-tests](https://github.com/hmrc/accessibility-assessment-tests) project.  This test suite includes test cases for:
+An end to end automated test suite has been implemented in the [accessibility-assessment-tests](https://github.com/hmrc/accessibility-assessment-tests) project.  This test suite includes test cases for:
 - violation filters
 - violation count
 
@@ -62,13 +66,5 @@ Visualisations for the local Kibana instance can be loaded manually using Kibana
 You should now be able to search for Dashboards and Visualisations using the *test-suite-name* given to your UI test job in our build-jobs config.
 
 
-# Notes....
-- setting up axe and vnu to run locally
-  - install vnu with `npm install vnu-jar -g`
-  - navigate to the vnu directory.  it'll be something like: `.nvm/versions/node/v12.15.0/lib/node_modules/vnu-jar/build/dist`
-  - create an executable:
-    - execute: `echo -e '#!/bin/bash\njava -jar ${HOME}/.nvm/versions/node/v${NODE_VERSION}/lib/node_modules/vnu-jar/build/dist/vnu.jar "$@"' > /usr/local/bin/vnu`
-    - then add permissions: `sudo chmod +x /usr/local/bin/vnu`
--
 # License
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
