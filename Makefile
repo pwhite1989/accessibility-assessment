@@ -23,7 +23,7 @@ prep_version_incrementor:
 	@echo "Installing version-incrementor with pipenv"
 	@pip install pipenv --upgrade
 	@pipenv --python $(PYTHON_VERSION)
-	@pipenv run pip install -i https://artefacts.tax.service.gov.uk/artifactory/api/pypi/pips/simple version-incrementor==0.2.0
+	@pipenv run pip install -i https://artefacts.tax.service.gov.uk/artifactory/api/pypi/pips/simple version-incrementor==0.7.0
 
 clean: ## Remove the fluentbit docker image
 	@echo '********** Cleaning up ************'
