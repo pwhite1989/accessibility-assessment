@@ -6,6 +6,7 @@ PYTHON_VERSION := $(shell cat .python-version)
 
 build: prep_version_incrementor ## Build the docker image
 	@echo '********** Building docker image ************'
+	@cp -r app docker/files/
 	@pipenv run prepare-release
 	@umask 0022
 	@docker build --no-cache --tag artefacts.tax.service.gov.uk/accessibility-assessment:$$(cat .version) docker

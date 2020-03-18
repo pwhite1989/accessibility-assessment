@@ -1,0 +1,19 @@
+{
+  "name": "accessibility-assessment-service",
+  "version": "1.0.0",
+  "description": "Surfaces the state of the accessibility-assessment container.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.2",
+    "errorhandler": "^1.4.3",
+    "rimraf": "^3.0.2",
+    "archiver": "^3.1.1"
+  }
+}

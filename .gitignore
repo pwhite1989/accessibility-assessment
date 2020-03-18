@@ -19,6 +19,10 @@ dist
 **/.DS_Store
 
 # project specific
-apps/esdata/*
-docker/files/service/node_modules
-docker/files/service/package-lock.json
+test/elk-stack/esdata/*
+docker/files/app
+app/node_modules
+app/output
+app/pages
+app/accessibility-assessment-service.log
+output/
