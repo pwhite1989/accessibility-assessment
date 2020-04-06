@@ -16,11 +16,6 @@ router.post('/', (req, res, next) => {
   const pageDirectory = path.join(config.pagesDirectory, '' + body.timestamp)
   logData.pageHTML = logData.pageHTML.substr(0, 100) + '...'
   logData.files = Object.keys(logData.files)
-  const errors = Object.assign({}, {errors:logData.errors})
-
-  for (var assetError in logData.errors) {
-    error(logData.errors[assetError].failedUrl, body.pageURL)
-  };
 
   //Capture the page for assessment if:
   //   - it hasn't already been captured and onePagePerPath is true
@@ -31,6 +26,10 @@ router.post('/', (req, res, next) => {
       && !stubRegEx.test(body.pageURL)
       && !testOnlyRegEx.test(body.pageURL)
       && htmlContentRegEx.test(body.pageHTML)){
+
+    for (var assetError in logData.errors) {
+      error(logData.errors[assetError].failedUrl, body.pageURL)
+    };
 
     capture(body.pageURL)
     const fileList = Object.assign({}, body.files, {'index.html': body.pageHTML}, {'data': body.pageURL})
