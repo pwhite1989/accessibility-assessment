@@ -7,6 +7,7 @@ const docker = {
   scriptDir: `${process.env.HOME}/app/resources`,
   accessibilityAssessmentReportHtml: 'accessibility-assessment-report.html',
   accessibilityAssessmentReportJson: 'accessibility-assessment-report.json',
+  globalFilterFileName: 'global-filters.conf',
   captureAllPages: process.env.CAPTURE_ALL_PAGES || false,
   pagesDirectory: `${process.env.HOME}/pages/`
 };
@@ -18,6 +19,7 @@ const local = {
   scriptDir: './resources',
   accessibilityAssessmentReportHtml: 'accessibility-assessment-report.html',
   accessibilityAssessmentReportJson: 'accessibility-assessment-report.json',
+  globalFilterFileName: 'global-filters.conf',
   captureAllPages: false,
   pagesDirectory: './pages/'
 }

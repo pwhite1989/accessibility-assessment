@@ -2,7 +2,6 @@
 PROJECT_DIR=${WORKSPACE}/accessibility-assessment
 DOCKER_FILES_DIR=${PROJECT_DIR}/docker/files
 accessibility_report_dir=${WORKSPACE}/accessibility-report/
-page_accessibility_check_dir=${WORKSPACE}/page-accessibility-check/
 
 # pull the latest accessibility report
 rm -rf ${DOCKER_FILES_DIR}/report

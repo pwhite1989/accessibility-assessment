@@ -25,4 +25,5 @@ app/node_modules
 app/output
 app/pages
 app/accessibility-assessment-service.log
+app/global-filters.conf
 output/
