@@ -152,6 +152,43 @@
 			"response": []
 		},
 		{
+			"name": "Load global-filters configuration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "filter",
+							"description": "",
+							"type": "file"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:6010/api/app/global-filters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "6010",
+					"path": [
+						"api",
+						"app",
+						"global-filters"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "Initialise App (with error)",
 			"request": {
 				"method": "POST",
