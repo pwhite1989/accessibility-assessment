@@ -65,6 +65,5 @@ Visualisations for the local Kibana instance can be loaded manually using Kibana
 
 You should now be able to search for Dashboards and Visualisations using the *test-suite-name* given to your UI test job in our build-jobs config.
 
-
 # License
 This code is open source software licensed under the [Apache 2.0 License]("http://www.apache.org/licenses/LICENSE-2.0.html").
