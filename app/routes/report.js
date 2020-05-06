@@ -23,7 +23,7 @@ router.get('/json', (req, res, next) => {
 
 router.get('/csv', (req, res, next) => {
   if(global.status != 'REPORT_READY') {
-    return res.status(200).json({}).send();
+    return res.status(404).send();
   }
   let filePath = path.join(config.outputDir, config.accessibilityAssessmentReportCsv);
   respondWithFile(filePath, res, next);
