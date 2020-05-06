@@ -18,3 +18,6 @@ docker run --cpus 3  \
 #    within the image).
 
 # -v ${PROJECT_DIR}/app:/home/seluser/app \
+
+#to pull down an image from artefactory
+#artefacts.tax.service.gov.uk/accessibility-assessment:0.15.0
