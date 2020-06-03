@@ -57,13 +57,18 @@ ElasticSearch and Kibana will start on the default ports of 9600 and 5601 respec
 To kill the stack, execute `docker-compose kill` from the [elk](test/elk) directory.  If you wish to delete all of the data ingested by elk, then delete the esdata directory `rm -r test/elk/esdata/*`
 
 ### Visualising Violations in Kibana
-Visualisations for the local Kibana instance can be loaded manually using Kibana's Saved Object import UI.  If this is the first time you've run the `docker-compose` command in the previous section, then please follow the below instructions to generate the visualisations you'll need to review the results of the assessment:
+Visualisations for the local Kibana instance can be loaded manually using Kibana's Saved Object import UI.  If this is
+ the first time you've run the `docker-compose` command in the previous section, then please follow the below instructions
+  to generate the visualisations you'll need to review the results of the assessment:
 
-1. In Kibana, navigate to **Management -> Saved Ojbects** and click **Import**.
-2. Load the [index saved object](test/elk/kibana/kibana-index-so.json).  Set the *time filter* field to *testRun* when prompted.
-3. Click **Import** again and load the [visualisations and dashboards saved objects](test/elk/kibana/management-kibana-so.json).
-
-You should now be able to search for Dashboards and Visualisations using the *test-suite-name* given to your UI test job in our build-jobs config.
+1. When the log ingestion is successful, Kibana will show the option to create an Index at **Management -> Index Patterns**.
+The index pattern could be set to `logstash-*` and set the *time filter* field to `testRun` when prompted.  
+2. The exported accessibility dashboards from Management Kibana environment is available [here](https://github.com/hmrc/management-kibana-dashboards/tree/master/saved-objects/management). The current 
+local ELK stack setup does not support `.raw` type used in Kibana Management. It supports only type `.keyword`. Hence,
+  before importing these objects replace all references to `.raw` type in the exported saved object with `.keyword`  
+3. Import the modified saved objects by navigating to **Management -> Saved Ojbects** and click **Import**. 
+4. When prompted to choose an index pattern, select the index pattern created above in step 1
+5. Upon successful import, the dashboards can be found under **Dashboard** section 
 
 
 # License
