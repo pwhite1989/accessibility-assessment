@@ -4,9 +4,8 @@ The accessibility assessment service is published as a docker image, and runs as
 This incarnation of the service was created following an accessibility audit which was conducted using the page coverage achieved by our UI test suites in CI.  The implementation arrived at for the audit is the result of prioritising expedience over all else (cost of improvement/maintenance/support).  Future work on the accessibility-assessment image will include collapsing the below components into a single Scala or Node service.
 
 At present the image is made up of the following components:
-- **accessibility-assessment-service**: a simple [node express](https://expressjs.com/) service that exposes a REST API which is consumed by the jenkins slave and our page-capture-chrome-extension to capture pages and orchestrate accessibility assessments.
+- **accessibility-assessment-service**: a [node express](https://expressjs.com/) service that exposes a REST API which is consumed by the jenkins slave and our page-capture-chrome-extension.  The API exposes endpoints to capture pages, trigger page assessments, produces reports and surfaces logging information.
 - **page-accessibility-check**: a jar published by [this Scala project](https://github.com/hmrc/page-accessibility-check) which executes axe and vnu assessments against a collection of pages.  This app is triggered by the accessibility-assessment-service.
-- **acessibility-reports**: another node project which generates a html report based on the json output of the page-accessibility-check application.
 
 
 # Building the Image in CI
@@ -62,13 +61,13 @@ Visualisations for the local Kibana instance can be loaded manually using Kibana
   to generate the visualisations you'll need to review the results of the assessment:
 
 1. When the log ingestion is successful, Kibana will show the option to create an Index at **Management -> Index Patterns**.
-The index pattern could be set to `logstash-*` and set the *time filter* field to `testRun` when prompted.  
-2. The exported accessibility dashboards from Management Kibana environment is available [here](https://github.com/hmrc/management-kibana-dashboards/tree/master/saved-objects/management). The current 
+The index pattern could be set to `logstash-*` and set the *time filter* field to `testRun` when prompted.
+2. The exported accessibility dashboards from Management Kibana environment is available [here](https://github.com/hmrc/management-kibana-dashboards/tree/master/saved-objects/management). The current
 local ELK stack setup does not support `.raw` type used in Kibana Management. It supports only type `.keyword`. Hence,
-  before importing these objects replace all references to `.raw` type in the exported saved object with `.keyword`  
-3. Import the modified saved objects by navigating to **Management -> Saved Ojbects** and click **Import**. 
+  before importing these objects replace all references to `.raw` type in the exported saved object with `.keyword`
+3. Import the modified saved objects by navigating to **Management -> Saved Ojbects** and click **Import**.
 4. When prompted to choose an index pattern, select the index pattern created above in step 1
-5. Upon successful import, the dashboards can be found under **Dashboard** section 
+5. Upon successful import, the dashboards can be found under **Dashboard** section
 
 
 # License

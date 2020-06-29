@@ -1,15 +1,6 @@
 #!/bin/bash
 PROJECT_DIR=${WORKSPACE}/accessibility-assessment
 DOCKER_FILES_DIR=${PROJECT_DIR}/docker/files
-accessibility_report_dir=${WORKSPACE}/accessibility-report/
-
-# pull the latest accessibility report
-rm -rf ${DOCKER_FILES_DIR}/report
-mkdir ${DOCKER_FILES_DIR}/report
-cp -r  $accessibility_report_dir/assets ${DOCKER_FILES_DIR}/report/
-cp $accessibility_report_dir/package* ${DOCKER_FILES_DIR}/report/
-cp $accessibility_report_dir/prepare-report.js ${DOCKER_FILES_DIR}/report
-cp $accessibility_report_dir/template.pug ${DOCKER_FILES_DIR}/report
 
 # cp the latest app/ into files
 rm -rf ${DOCKER_FILES_DIR}/app || true
