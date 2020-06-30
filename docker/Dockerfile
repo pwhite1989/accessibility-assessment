@@ -2,9 +2,6 @@ FROM selenium/node-chrome:3.141.59-titanium
 
 ENV CAPTURE_ALL_PAGES false
 ENV APP_PORT 6010
-ENV JENKINS_USERNAME jenkins.user
-ENV JENKINS_API_KEY 1234abcd
-ENV LOG_EXPORT_WAIT 30
 ENV NVM_VERSION 0.35.3
 ENV NODE_VERSION 12.16.1
 ENV NPM_AXE_VERSION 3.1.0
@@ -20,11 +17,9 @@ WORKDIR ${HOME}
 
 COPY --chown=seluser:seluser files/start.sh ${HOME}/start.sh
 COPY --chown=seluser:seluser files/app ${HOME}/app
-COPY --chown=seluser:seluser files/report ${HOME}/report
 
 RUN sudo chmod 755 ${HOME}/start.sh \
       && sudo chmod -R 755 ${HOME}/app \
-      && sudo chmod 755 ${HOME}/report/prepare-report.js \
       && sudo mkdir ${HOME}/output \
       && sudo chmod 755 ${HOME}/output \
       && sudo chown -R seluser:seluser ${HOME}/output \
@@ -49,8 +44,6 @@ RUN   cd ${HOME} \
       && cd ${HOME} \
       && npm install vnu-jar@${NPM_VNU_VERSION} -g \
       && cd ${HOME}/app \
-      && npm install \
-      && cd ${HOME}/report \
       && npm install
 
 EXPOSE 6010

@@ -14,7 +14,7 @@ build: prep_version_incrementor ## Build the docker image
 authenticate_to_artifactory:
 	@docker login --username ${ARTIFACTORY_USERNAME} --password "${ARTIFACTORY_PASSWORD}"  artefacts.tax.service.gov.uk
 
-push_image: ## Push the fluentbit docker image to artifactory
+push_image: ## Push the docker image to artifactory
 	@docker push artefacts.tax.service.gov.uk/accessibility-assessment:$$(cat .version)
 	@pipenv run cut-release
 
@@ -25,7 +25,7 @@ prep_version_incrementor:
 	@pipenv --python $(PYTHON_VERSION)
 	@pipenv run pip install -i https://artefacts.tax.service.gov.uk/artifactory/api/pypi/pips/simple version-incrementor==0.7.0
 
-clean: ## Remove the fluentbit docker image
+clean: ## Remove the docker image
 	@echo '********** Cleaning up ************'
 	@docker rmi -f $$(docker images artefacts.tax.service.gov.uk/accessibility-assessment:$$(cat .version) -q)
 
