@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const logger = require('../logger')
 const { applicationStatus } = require('../services/globals');
-const { runAssessment } = require('../services/scripts');
+const { runAssessment } = require('../services/runAssessment');
 
 router.post('/', (req, res) => {
   if(global.status != 'PAGES_CAPTURED') {

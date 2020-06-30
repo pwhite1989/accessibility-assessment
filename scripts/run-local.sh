@@ -15,7 +15,10 @@ docker run --cpus 3  \
     accessibility-assessment:SNAPSHOT
 
 # For local development, include the commented out line below (which mounts ./app
-#    within the image).
+#    within the image).  Note that you will also need to delete the
+#    ${PROJECT_DIR}/app/node_modules directory as it will contain packages specific
+#    to the filesystem of your local development environment, and not that off the
+#    docker container.
 
 # -v ${PROJECT_DIR}/app:/home/seluser/app \
 

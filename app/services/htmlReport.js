@@ -86,7 +86,7 @@ const includeSass = model => (new Promise((res, rej) => {
 const writeReportToFileSystem = report => {
   fs.writeFile(path.join(config.outputDir, config.accessibilityAssessmentReportHtml), report, (err, data) => {
     if (err) {
-      logger.log('ERROR', `An error occured when attempting to write the report to disk.`)
+      logger.log('ERROR', `An error occured when attempting to write the report to file system.`)
       throw err
     }
     logger.log('INFO', `HTML report ready.`)
