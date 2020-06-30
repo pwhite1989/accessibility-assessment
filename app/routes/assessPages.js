@@ -9,8 +9,8 @@ router.post('/', (req, res) => {
     return res.status(200).json({message: "No Pages available for assessment."}).send()
   }
 
-  applicationStatus("ASSESSING_PAGES");
   runAssessment();
+
   res.status(202).json({message: "Page assessment triggered."}).send();
 })
 
