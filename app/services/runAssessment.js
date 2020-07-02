@@ -8,7 +8,7 @@ const { applicationStatus } = require('./globals');
 async function runScript(command) {
   let stderr = ''
   try {
-    let { stdout, stderr } = await exec(command)
+    let { stdout, stderr } = await exec(command, {maxBuffer: 1024 * 4096})
   } catch(error) {
     logger.log('ERROR', `Failed to run script: ${error}`)
     applicationStatus('PAGE_ASSESSMENT_FAILED')
